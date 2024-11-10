@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 /* styles.css */
 *,
 *::before,
@@ -9,17 +16,10 @@
   outline: 1px solid red;
 }
 :root {
-  --main-Background: black;
-  --main-Secondary: Rebeccapurple;
-}
-
-:root.light {
-  --main-Background: white;
-  --main-Secondary: black;
-}
-:root.dark {
-  --main-Background: black;
-  --main-Secondary: white;
+  --text-Color: rgb(236, 236, 236);
+  --main-Primary: Rebeccapurple;
+  --main-Background: rgb(50, 50, 50);
+  --secondary-Background: rgb(160, 160, 160);
 }
 html {
   height: 100svh;
@@ -31,15 +31,15 @@ body {
 .main {
   height: 100%;
   width: 100%;
-  background-color: yellow;
+  background-color: var(--main-Background);
 }
 .mainHeader {
-  background-color: var(--main-Secondary);
+  background-color: var(--main-Primary);
   width: 100%;
   height: 9%;
 }
 .mainBody {
-  background-color: grey;
+  color: var(--text-Color);
   width: 100%;
   height: 82%;
   display: flex;
@@ -54,7 +54,7 @@ body {
   position: sticky;
   height: 9%;
   width: 100%;
-  background-color: pink;
+  background-color: var(--main-Primary);
   bottom: 0%;
 }
 h1 {
@@ -67,37 +67,19 @@ h1 {
   padding-right: 2%;
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
   gap: 3%;
-  /* background-color: var(--main-Secondary); */
   min-width: 100%;
   min-height: 30%;
 }
-/* .arrow {
-  position: absolute;
-  top: 50%; 
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5); 
-  color: white;
-  padding: 10px;
-  font-size: 24px;
-  cursor: pointer;
-}
-.left-arrow {
-  left: 10px;
-}
-.right-arrow {
-  right: 10px;
-} */
 .featuredCard {
   border-radius: 8px;
-  background-color: var(--main-Background);
+  background-color: var(--secondary-Background);
   min-width: 75%;
   height: 100%;
 }
 .movieCard {
   border-radius: 8px;
-  background-color: var(--main-Background);
+  background-color: var(--secondary-Background);
   min-width: 35%;
-  height: 100%;
+  min-height: 100%;
 }
