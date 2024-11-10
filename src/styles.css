@@ -1,0 +1,85 @@
+/* styles.css */
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+  outline: 1px solid red;
+}
+:root {
+  --main-Background: black;
+  --main-Secondary: Rebeccapurple;
+}
+
+:root.light {
+  --main-Background: white;
+  --main-Secondary: black;
+}
+:root.dark {
+  --main-Background: black;
+  --main-Secondary: white;
+}
+html {
+  height: 100svh;
+}
+body {
+  height: 100%;
+  width: 100%;
+}
+.main {
+  height: 100%;
+  width: 100%;
+  background-color: yellow;
+}
+.mainHeader {
+  background-color: var(--main-Secondary);
+  width: 100%;
+  height: 10%;
+}
+.mainBody {
+  background-color: grey;
+  width: 100%;
+  height: 80%;
+  display: flex;
+  /* justify-content: space-evenly; */
+  flex-direction: column;
+  /* gap: 1%; */
+  overflow-y: scroll;
+  padding-bottom: 4%;
+  /* padding-top: 2%; */
+}
+.mainFooter {
+  position: sticky;
+  height: 10%;
+  width: 100%;
+  background-color: pink;
+  bottom: 0%;
+}
+h1 {
+  padding: 1%;
+}
+.carouselContainer {
+  overflow-x: scroll;
+  padding-left: 2%;
+  padding-right: 2%;
+  display: flex;
+  justify-content: space-around;
+  gap: 3%;
+  /* background-color: var(--main-Secondary); */
+  min-width: 100%;
+  min-height: 30%;
+}
+.featuredCard {
+  border-radius: 8px;
+  background-color: var(--main-Background);
+  min-width: 75%;
+  height: 100%;
+}
+.movieCard {
+  border-radius: 8px;
+  background-color: var(--main-Background);
+  min-width: 35%;
+  height: 100%;
+}
