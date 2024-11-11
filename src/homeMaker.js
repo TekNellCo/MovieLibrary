@@ -73,6 +73,10 @@ function popularMovies(container) {
   }
 }
 
+function clearPopularArray() {
+  carouselPopular = [];
+}
+
 // export function genreContainer(i, name) {
 //   for (let i = 0; i < 10; ++i) {
 //     const movieCards = document.createElement('div');

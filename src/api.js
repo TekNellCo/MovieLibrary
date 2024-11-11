@@ -25,6 +25,7 @@ export function movieFetch() {
       return response.json();
     })
     .then(function (response) {
+      clearPopularArray();
       for (let i = 0; i < 5; i++) {
         // console.log(response);
         let name = response.results[i].title;
@@ -47,4 +48,8 @@ function movieObjectMaker(i, name, description, poster, id) {
     id: id,
   };
   carouselPopular.push(movie);
+}
+
+function clearPopularArray() {
+  carouselPopular = [];
 }
