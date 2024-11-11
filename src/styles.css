@@ -1,11 +1,3 @@
-/*
-* Prefixed by https://autoprefixer.github.io
-* PostCSS: v8.4.14,
-* Autoprefixer: v10.4.7
-* Browsers: last 4 version
-*/
-
-/* styles.css */
 *,
 *::before,
 *::after {
@@ -43,19 +35,26 @@ body {
   width: 100%;
   height: 82%;
   display: flex;
-  /* justify-content: space-evenly; */
   flex-direction: column;
-  /* gap: 1%; */
   overflow-y: scroll;
   padding-bottom: 4%;
-  /* padding-top: 2%; */
 }
 .mainFooter {
+  display: flex;
   position: sticky;
   height: 9%;
   width: 100%;
   background-color: var(--main-Primary);
   bottom: 0%;
+}
+.navIcons {
+  background-color: var(--main-Primary);
+  width: 100%;
+  height: 100%;
+}
+.navIcons img {
+  width: 45%;
+  height: auto;
 }
 h1 {
   padding: 1%;
