@@ -1,11 +1,13 @@
 import './styles.css';
-import { homeBuilder } from './home.js';
+import { homeBuilder } from './homeMaker.js';
+import { movieFetch } from './api.js';
 
 export const mainBody = document.querySelector('.mainBody');
 const home = document.querySelector('.home');
 const watchList = document.querySelector('.watchList');
 let page = 'home';
 
+// movieFetch();
 homeBuilder();
 
 home.addEventListener('click', () => {
