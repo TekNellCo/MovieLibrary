@@ -87,6 +87,7 @@ function popularMovies(container) {
     console.log('below is poster path');
     console.log(url);
     movieCards.src = `${url}`;
+
     movieCards.dataset.id = `${dataSetID}`;
   }
 }
@@ -95,11 +96,14 @@ function top_rated(container) {
   for (let i = 0; i < movieLibrary.top_rated.length; ++i) {
     let url = `https://image.tmdb.org/t/p/w500${movieLibrary.top_rated[i].poster_path}`;
     const movieCards = document.createElement('img');
+    let dataSetID = `${movieLibrary.top_rated[i].id}`;
     movieCards.classList.add('movieCard');
     container.append(movieCards);
     console.log('below is poster path');
     console.log(url);
     movieCards.src = `${url}`;
+
+    movieCards.dataset.id = `${dataSetID}`;
   }
 }
 
@@ -107,55 +111,70 @@ function action(container) {
   for (let i = 0; i < movieLibrary.action.length; ++i) {
     let url = `https://image.tmdb.org/t/p/w500${movieLibrary.action[i].poster_path}`;
     const movieCards = document.createElement('img');
+    let dataSetID = `${movieLibrary.action[i].id}`;
     movieCards.classList.add('movieCard');
     container.append(movieCards);
     console.log('below is poster path');
     console.log(url);
     movieCards.src = `${url}`;
+
+    movieCards.dataset.id = `${dataSetID}`;
   }
 }
 function comedy(container) {
   for (let i = 0; i < movieLibrary.comedy.length; ++i) {
     let url = `https://image.tmdb.org/t/p/w500${movieLibrary.comedy[i].poster_path}`;
     const movieCards = document.createElement('img');
+    let dataSetID = `${movieLibrary.comedy[i].id}`;
     movieCards.classList.add('movieCard');
     container.append(movieCards);
     console.log('below is poster path');
     console.log(url);
     movieCards.src = `${url}`;
+
+    movieCards.dataset.id = `${dataSetID}`;
   }
 }
 function drama(container) {
   for (let i = 0; i < movieLibrary.drama.length; ++i) {
     let url = `https://image.tmdb.org/t/p/w500${movieLibrary.drama[i].poster_path}`;
     const movieCards = document.createElement('img');
+    let dataSetID = `${movieLibrary.drama[i].id}`;
     movieCards.classList.add('movieCard');
     container.append(movieCards);
     console.log('below is poster path');
     console.log(url);
     movieCards.src = `${url}`;
+
+    movieCards.dataset.id = `${dataSetID}`;
   }
 }
 function horror(container) {
   for (let i = 0; i < movieLibrary.horror.length; ++i) {
     let url = `https://image.tmdb.org/t/p/w500${movieLibrary.horror[i].poster_path}`;
     const movieCards = document.createElement('img');
+    let dataSetID = `${movieLibrary.horror[i].id}`;
     movieCards.classList.add('movieCard');
     container.append(movieCards);
     console.log('below is poster path');
     console.log(url);
     movieCards.src = `${url}`;
+
+    movieCards.dataset.id = `${dataSetID}`;
   }
 }
 function romance(container) {
   for (let i = 0; i < movieLibrary.romance.length; ++i) {
     let url = `https://image.tmdb.org/t/p/w500${movieLibrary.romance[i].poster_path}`;
     const movieCards = document.createElement('img');
+    let dataSetID = `${movieLibrary.romance[i].id}`;
     movieCards.classList.add('movieCard');
     container.append(movieCards);
     console.log('below is poster path');
     console.log(url);
     movieCards.src = `${url}`;
+
+    movieCards.dataset.id = `${dataSetID}`;
   }
 }
 // function clearPopularArray() {
