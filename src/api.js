@@ -1,5 +1,3 @@
-import { genreContainer } from './home';
-import { containerSort } from './home';
 import { cloneCarouselContainer } from './homeMaker';
 
 export let movieLibrary = {
