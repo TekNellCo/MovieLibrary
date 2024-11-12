@@ -1,8 +1,7 @@
 import { cloneCarouselContainer } from './homeMaker';
 import { cloneContainer } from './homeMaker';
-import { page } from './index';
 
-export const movieLibrary = {
+export let movieLibrary = {
   popular: [],
   top_rated: [],
   action: [],
@@ -11,8 +10,6 @@ export const movieLibrary = {
   horror: [],
   romance: [],
 };
-
-export const searchResults = [];
 
 const apiKey = '6d1c6bdb01f6a3f8c701bb8779398b91';
 const options = {
@@ -89,7 +86,7 @@ async function fetchMoviesByCategory(category) {
         // Push the movies to the corresponding category in movieLibrary
         if (movieLibrary[category.name]) {
           movieLibrary[category.name].push(...movies); // Spread operator to add all movies
-          // console.log(movieLibrary);
+          console.log(movieLibrary);
         } else {
           console.error(`Category ${category.name} not found in movieLibrary`);
         }
@@ -101,35 +98,6 @@ async function fetchMoviesByCategory(category) {
       console.error(`Error fetching category ${category.name}:`, err);
     });
 }
-
-export async function searchAPI() {
-  const query = 'interstellar';
-  const encodedQuery = encodeURIComponent(query);
-
-  fetch(
-    `https://api.themoviedb.org/3/search/movie?query=${encodedQuery}&api_key=${apiKey}`,
-    options
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      console.log('data', data.results.length);
-      data.results.forEach((result) => {
-        searchResults.push(result);
-      });
-      console.log(searchResults);
-    })
-
-    .catch((error) => console.error('Error fetching data:', error));
-}
-
-//  if (page === 'watchlist') {
-//    if (hasRun === false) {
-//      hasRun = true;
-//      await searchAPI(hasRun);
-//      hasRun = false;
-//      return;
-//    }
-//  }
 
 // function fetchMoviesByCategory(category) {
 //   return fetch(category.url, options)

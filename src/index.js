@@ -1,11 +1,12 @@
 import './styles.css';
 import { homeBuilder } from './homeMaker.js';
 import { movieFetch } from './api.js';
+import { searchAPI } from './api.js';
 
 export const mainBody = document.querySelector('.mainBody');
 const home = document.querySelector('.home');
 const watchList = document.querySelector('.watchList');
-let page = '';
+export let page = '';
 
 movieFetch();
 // homeBuilder();
@@ -13,18 +14,19 @@ movieFetch();
 home.addEventListener('click', () => {
   if (page === 'home') {
   } else if (page !== 'home') {
+    page = 'home';
     clearMainBody();
     homeBuilder();
-    page = 'home';
   }
 });
 
 watchList.addEventListener('click', () => {
   if (page === 'watchList') {
   } else if (page !== 'watchList') {
+    page = 'watchlist';
     clearMainBody();
     console.log('watchlist');
-    page = 'watchlist';
+    searchAPI();
   }
 });
 
