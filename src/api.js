@@ -75,15 +75,17 @@ async function fetchMoviesByCategory(category) {
   return fetch(category.url, options)
     .then((res) => res.json())
     .then((data) => {
+      console.log('data info');
+      console.log(data);
       const movies = data.results.slice(0, 5); // Get the first 5 movies
-
+      //#region
       // Push the movies to the corresponding category in movieLibrary
       if (movieLibrary[category.name]) {
         movieLibrary[category.name].push(...movies); // Spread operator to add all movies
       } else {
         console.error(`Category ${category.name} not found in movieLibrary`);
       }
-
+      //end region
       console.log(`Fetched movies for ${category.name}:`, movies);
     })
     .catch((err) => {

@@ -11,7 +11,7 @@ export function homeBuilder() {
 }
 
 // #region [red]
-///clones carousel containers
+///makes 7 carousel containers
 function cloneContainer() {
   let genreID = -1;
 
@@ -73,15 +73,21 @@ export function containerSort(i, carouselContainer, newForYou) {
   }
 }
 
+/////populates containers with movie cards according to category
 function popularMovies(container) {
   for (let i = 0; i < movieLibrary.popular.length; ++i) {
     let url = `https://image.tmdb.org/t/p/w500${movieLibrary.popular[i].poster_path}`;
+    let dataSetID = `${movieLibrary.popular[i].id}`;
+    console.log('product id');
+    // console.log(movieLibrary.popular[i].id);
+    console.log(dataSetID);
     const movieCards = document.createElement('img');
     movieCards.classList.add('movieCard');
     container.append(movieCards);
     console.log('below is poster path');
     console.log(url);
     movieCards.src = `${url}`;
+    movieCards.dataset.id = `${dataSetID}`;
   }
 }
 
