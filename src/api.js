@@ -12,7 +12,7 @@ export const movieLibrary = {
   romance: [],
 };
 
-export const searchResults = [];
+export let searchResults = [];
 
 const apiKey = '6d1c6bdb01f6a3f8c701bb8779398b91';
 const options = {
@@ -105,6 +105,7 @@ async function fetchMoviesByCategory(category) {
 export async function searchAPI() {
   const query = 'interstellar';
   const encodedQuery = encodeURIComponent(query);
+  searchResults = [];
 
   fetch(
     `https://api.themoviedb.org/3/search/movie?query=${encodedQuery}&api_key=${apiKey}`,
