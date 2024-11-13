@@ -1,5 +1,3 @@
-import myImage from './images/movie_poster.jpg';
-
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
