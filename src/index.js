@@ -38,7 +38,7 @@ watchList.addEventListener('click', () => {
 searchButton.addEventListener('click', () => {
   page = 'search';
   clearMainBody();
-  searchAPI();
+  searchAPI(searchBar.value);
   flexWrapBuilder();
 });
 
@@ -52,8 +52,8 @@ export function flexWrapBuilder() {
   flexWrap = document.createElement('div');
   flexWrap.classList.add('flexWrap');
   mainBody.append(flexWrap);
-  if (page === 'search') {
-    console.log(flexWrap);
-    // console.log('it works', flexWrap)
-  }
 }
+
+searchBar.addEventListener('focus', (e) => {
+  e.target.select();
+});

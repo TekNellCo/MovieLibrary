@@ -5,11 +5,15 @@ import { flexWrapBuilder } from './index';
 
 ///loops through searchResults array and grabs posters images
 export function searchResultsLoop() {
+  flexWrapBuilder();
   searchResults.forEach((result) => {
     console.log(result.title);
     let poster_image = result.poster_path;
-
-    posterBuilder(poster_image);
+    if (poster_image && poster_image !== null && poster_image !== '') {
+      posterBuilder(poster_image);
+    } else {
+      console.log(`No valid image for ${result}`);
+    }
   });
   console.log('search results', searchResults);
 }

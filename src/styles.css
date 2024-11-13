@@ -14,7 +14,7 @@
   --secondary-Background: rgb(160, 160, 160);
 }
 html {
-  height: 100svh;
+  height: 100dvh;
 }
 body {
   height: 100%;
@@ -66,17 +66,12 @@ h1 {
   padding: 1%;
 }
 .flexWrap {
+  display: flex;
   padding-top: 3%;
-
-  background-color: aqua;
-  align-items: flex-start;
   padding-left: 2%;
   gap: 3%;
-  padding-right: 2%;
-  display: flex;
   justify-content: flex-start;
   min-width: 100%;
-  min-height: 100%;
   height: auto;
   flex-wrap: wrap;
   row-gap: 10px;
@@ -88,7 +83,8 @@ h1 {
   max-width: 30%;
   min-width: 30%;
   width: auto;
-  height: 26%;
+  min-height: 15%;
+  /* height: 26%; */
 }
 /* .flexCard img {
   border-radius: 8px;
