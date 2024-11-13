@@ -203,3 +203,9 @@ h1 {
   max-height: 15rem;
   overflow: scroll;
 }
+.watchListButton {
+  background-color: chartreuse;
+}
+.watchListButton::after {
+  background-color: red;
+}

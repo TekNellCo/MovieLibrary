@@ -2,8 +2,12 @@ import { cloneCarouselContainer } from './homeMaker';
 import { cloneContainer } from './homeMaker';
 import { page } from './index';
 import { searchResultsLoop } from './search';
-import { movieCardExpandedCreator } from './movieCardExpanded';
+import {
+  movieCardExpandedCreator,
+  movieObjectMaker,
+} from './movieCardExpanded';
 import { clearMainBody } from './index';
+import { movieObjectCreator } from './movieCardExpanded';
 
 export const movieLibrary = {
   popular: [],
@@ -127,7 +131,7 @@ export async function searchAPI(query) {
       }
       if (page === 'Movie Card') {
         console.log('movie card expanded creator');
-        // clearMainBody();
+        // movieObjectCreator();
         movieCardExpandedCreator();
         console.log('watchlist');
       } else {

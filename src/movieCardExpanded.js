@@ -2,7 +2,10 @@ import { mainBody } from '.';
 import moviePoster from './images/movie_poster.jpg';
 import { searchResults } from './api';
 import { page } from '.';
-import { watchlistArray } from './watchlist';
+import { toggleMovieWatchlist } from './watchlist';
+import { movieMapWatchlist } from './watchlist';
+
+export let watchlistOrWatched = '';
 
 export async function movieCardExpandedCreator() {
   if (page === 'Movie Card') {
@@ -34,6 +37,34 @@ export async function movieCardExpandedCreator() {
     posterImage.src = `https://image.tmdb.org/t/p/w500${poster_image}`;
   }
 
+  watchListButton.textContent = 'Add to watchlist';
+  WatchedButton.textContent = 'Watched';
+
+  //region
+
+  console.log('search results title', searchResults[0].title);
+  movieMapWatchlist.forEach((movie) => {
+    console.log('each movie is', movie);
+    if (movie.title === searchResults[0].title) {
+      watchListButton.style.cssText = 'background-color: grey';
+      watchListButton.textContent = 'Remove from watchlist';
+      console.log('TITLES MATCH');
+      console.log(
+        `watchlist title is ${movie.title}`,
+        `search result is ${searchResults[0].title}`
+      );
+    } else {
+      watchListButton.style.cssText = 'background-color:chartreuse';
+      watchListButton.textContent = 'Add to watchlist';
+      console.log(
+        `watchlist title is ${movie.title}`,
+        `search result is ${searchResults[0].title}`
+      );
+    }
+  });
+
+  //region end
+
   backButton.classList.add('backButton');
   movieCardExpanded.classList.add('movieCardExpanded');
   posterContainer.classList.add('posterContainer');
@@ -60,21 +91,60 @@ export async function movieCardExpandedCreator() {
   title.textContent = `${movie_title}`;
   genre.textContent = 'Horror';
   description.textContent = `${movie_description}`;
-  watchListButton.textContent = 'Watchlist';
-  WatchedButton.textContent = 'Watched';
+
   backButton.addEventListener('click', () => {
     movieCardExpanded.remove();
     mainBody.style.cssText = 'overflow : scroll; height:auto';
   });
   watchListButton.addEventListener('click', () => {
     console.log('array', searchResults);
-    if (watchlistArray.includes(searchResults[0])) {
-      return;
-    } else {
-      watchlistArray.push(searchResults[0]);
-    }
-    console.log(watchlistArray);
+    watchlistOrWatched = 'watchlist';
+    movieObjectCreator(searchResults, watchListButton);
+    // let watchObject = {
+    //   title: searchResults[0].title,
+    //   backdrop_path: searchResults[0].backdrop_path,
+    //   poster_path: searchResults[0].poster_path,
+    //   overview: searchResults[0].overview,
+    // };
 
-    console.log('new set', watchlistwithoutduplicates);
+    // console.log('watchlist object', watchObject);
+    // watchlistArray.push(watchObject);
+    // console.log('watchlist array', watchlistArray);
+    // if (watchlistArray.includes(searchResults[0])) {
+    //   return;
+    // } else {
+    //   watchlistArray.push(searchResults[0]);
+    // }
+    // console.log(watchlistArray);
   });
 }
+///////////////////////////////////////////////////////
+
+export function movieObjectCreator(searchResults, watchListButton) {
+  console.log('HEY SEARCH RESULTS', searchResults);
+  let watchObject = {
+    title: searchResults[0].title,
+    backdrop_path: searchResults[0].backdrop_path,
+    poster_path: searchResults[0].poster_path,
+    overview: searchResults[0].overview,
+  };
+  toggleMovieWatchlist(watchObject, watchListButton);
+  //   console.log(watchObject);
+}
+
+// Test data
+// let movie1 = { title: 'Movie 1', year: 2023 };
+// let movie2 = { title: 'Movie 2', year: 2021 };
+// let movie3 = { title: 'Movie 3', year: 2022 };
+// let movie4 = { title: 'Movie 1', year: 2023 }; // Same content as movie1
+// // Adding movies to the Map
+// toggleMovie(movie1); // Movie added
+// toggleMovie(movie2); // Movie added
+// toggleMovie(movie3); // Movie added
+// // Trying to add a duplicate (movie4, which is the same as movie1)
+// toggleMovie(movie4); // Movie removed (toggle behavior)
+// console.log(movieMap); // Map should only contain movie2 and movie3 now
+// // Accessing movies in the Map:
+// for (let [key, movie] of movieMap) {
+//   console.log('Movie in map:', movie);
+// }
