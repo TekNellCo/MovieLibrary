@@ -32,8 +32,6 @@ watchList.addEventListener('click', () => {
   } else if (page !== 'watchList') {
     page = 'watchlist';
     clearMainBody();
-    movieCardExpandedCreator();
-    console.log('watchlist');
   }
 });
 
@@ -45,7 +43,7 @@ searchForm.addEventListener('submit', (e) => {
 });
 
 /////resets the main page
-function clearMainBody() {
+export function clearMainBody() {
   mainBody.innerHTML = '';
 }
 
@@ -59,4 +57,14 @@ export function flexWrapBuilder() {
 //////When search bar is clicked it highlights all the text
 searchBar.addEventListener('focus', (e) => {
   e.target.select();
+});
+
+///////used to get dataset title for movies, wherever i click it gives me the dataset title
+document.addEventListener('click', (e) => {
+  if (e.target.dataset.title !== undefined) {
+    page = 'Movie Card';
+    console.log(page);
+    searchAPI(e.target.dataset.title);
+    window.scrollTo(0, 0);
+  }
 });

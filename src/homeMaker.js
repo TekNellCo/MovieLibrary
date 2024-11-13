@@ -88,7 +88,7 @@ function popularMovies(container) {
     // console.log(url);
     movieCards.src = `${url}`;
 
-    movieCards.dataset.title = `${dataSetID}`;
+    movieCards.dataset.title = `${movieLibrary.popular[i].title}`;
   }
 }
 
@@ -103,7 +103,7 @@ function top_rated(container) {
     // console.log(url);
     movieCards.src = `${url}`;
 
-    movieCards.dataset.id = `${dataSetID}`;
+    movieCards.dataset.title = `${movieLibrary.top_rated[i].title}`;
   }
 }
 
@@ -118,7 +118,7 @@ function action(container) {
     // console.log(url);
     movieCards.src = `${url}`;
 
-    movieCards.dataset.id = `${dataSetID}`;
+    movieCards.dataset.title = `${movieLibrary.action[i].title}`;
   }
 }
 function comedy(container) {
@@ -132,7 +132,7 @@ function comedy(container) {
     // console.log(url);
     movieCards.src = `${url}`;
 
-    movieCards.dataset.id = `${dataSetID}`;
+    movieCards.dataset.title = `${movieLibrary.comedy[i].title}`;
   }
 }
 function drama(container) {
@@ -146,7 +146,7 @@ function drama(container) {
     // console.log(url);
     movieCards.src = `${url}`;
 
-    movieCards.dataset.id = `${dataSetID}`;
+    movieCards.dataset.title = `${movieLibrary.drama[i].title}`;
   }
 }
 function horror(container) {
@@ -160,7 +160,7 @@ function horror(container) {
     // console.log(url);
     movieCards.src = `${url}`;
 
-    movieCards.dataset.id = `${dataSetID}`;
+    movieCards.dataset.title = `${movieLibrary.horror[i].title}`;
   }
 }
 function romance(container) {
@@ -174,7 +174,7 @@ function romance(container) {
     // console.log(url);
     movieCards.src = `${url}`;
 
-    movieCards.dataset.id = `${dataSetID}`;
+    movieCards.dataset.title = `${movieLibrary.romance[i].title}`;
   }
 }
 // function clearPopularArray() {

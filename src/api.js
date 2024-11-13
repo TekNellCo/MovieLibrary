@@ -2,6 +2,8 @@ import { cloneCarouselContainer } from './homeMaker';
 import { cloneContainer } from './homeMaker';
 import { page } from './index';
 import { searchResultsLoop } from './search';
+import { movieCardExpandedCreator } from './movieCardExpanded';
+import { clearMainBody } from './index';
 
 export const movieLibrary = {
   popular: [],
@@ -113,11 +115,24 @@ export async function searchAPI(query) {
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log('data', data.results.length);
-      data.results.forEach((result) => {
-        searchResults.push(result);
-      });
-      searchResultsLoop();
+      console.log('IT WORKED');
+      console.log('movie search info', data.results[0]);
+      if (page === 'Movie Card') {
+        // searchResults = [];
+        searchResults.push(data.results[0]);
+      } else {
+        data.results.forEach((result) => {
+          searchResults.push(result);
+        });
+      }
+      if (page === 'Movie Card') {
+        console.log('movie card expanded creator');
+        // clearMainBody();
+        movieCardExpandedCreator();
+        console.log('watchlist');
+      } else {
+        searchResultsLoop();
+      }
     })
 
     .catch((error) => console.error('Error fetching data:', error));

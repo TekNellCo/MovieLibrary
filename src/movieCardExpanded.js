@@ -1,7 +1,20 @@
 import { mainBody } from '.';
 import moviePoster from './images/movie_poster.jpg';
+import { searchResults } from './api';
+import { page } from '.';
 
-export function movieCardExpandedCreator(movieTitle, overview) {
+const body = document.body;
+
+export async function movieCardExpandedCreator() {
+  if (page === 'Movie Card') {
+    // body.style.overflow = 'hidden';
+  }
+  console.log('single search result', searchResults);
+  let poster_image = searchResults[0].backdrop_path;
+  let movie_title = searchResults[0].title;
+  let movie_description = searchResults[0].overview;
+
+  const backButton = document.createElement('button');
   const movieCardExpanded = document.createElement('div');
   const posterContainer = document.createElement('div');
   const posterImage = document.createElement('img');
@@ -12,8 +25,9 @@ export function movieCardExpandedCreator(movieTitle, overview) {
   const watchListButton = document.createElement('button');
   const WatchedButton = document.createElement('button');
 
-  posterImage.src = moviePoster;
+  posterImage.src = `https://image.tmdb.org/t/p/w500${poster_image}`;
 
+  backButton.classList.add('backButton');
   movieCardExpanded.classList.add('movieCardExpanded');
   posterContainer.classList.add('posterContainer');
   posterImage.classList.add('posterImage');
@@ -33,10 +47,16 @@ export function movieCardExpandedCreator(movieTitle, overview) {
   movieInfo.append(description);
   movieInfo.append(watchListButton);
   movieInfo.append(WatchedButton);
+  movieInfo.append(backButton);
 
-  title.textContent = `${movieTitle}`;
+  backButton.textContent = 'Back';
+  title.textContent = `${movie_title}`;
   genre.textContent = 'Horror';
-  description.textContent = `${overview}`;
+  description.textContent = `${movie_description}`;
   watchListButton.textContent = 'Watchlist';
   WatchedButton.textContent = 'Watched';
+  backButton.addEventListener('click', () => {
+    movieCardExpanded.remove();
+    body.style.overflow = 'scroll';
+  });
 }
