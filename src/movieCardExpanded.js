@@ -2,12 +2,11 @@ import { mainBody } from '.';
 import moviePoster from './images/movie_poster.jpg';
 import { searchResults } from './api';
 import { page } from '.';
-
-const body = document.body;
+import { watchlistArray } from './watchlist';
 
 export async function movieCardExpandedCreator() {
   if (page === 'Movie Card') {
-    // body.style.overflow = 'hidden';
+    mainBody.style.cssText = 'overflow : hidden; height:60rem';
   }
   console.log('single search result', searchResults);
   let poster_image = searchResults[0].backdrop_path;
@@ -25,7 +24,15 @@ export async function movieCardExpandedCreator() {
   const watchListButton = document.createElement('button');
   const WatchedButton = document.createElement('button');
 
-  posterImage.src = `https://image.tmdb.org/t/p/w500${poster_image}`;
+  if (
+    searchResults[0].backdrop_path == null ||
+    searchResults[0].backdrop_path == undefined ||
+    searchResults[0].backdrop_path == ''
+  ) {
+    posterImage.src = `https://image.tmdb.org/t/p/w500${searchResults[0].poster_path}`;
+  } else {
+    posterImage.src = `https://image.tmdb.org/t/p/w500${poster_image}`;
+  }
 
   backButton.classList.add('backButton');
   movieCardExpanded.classList.add('movieCardExpanded');
@@ -57,6 +64,17 @@ export async function movieCardExpandedCreator() {
   WatchedButton.textContent = 'Watched';
   backButton.addEventListener('click', () => {
     movieCardExpanded.remove();
-    body.style.overflow = 'scroll';
+    mainBody.style.cssText = 'overflow : scroll; height:auto';
+  });
+  watchListButton.addEventListener('click', () => {
+    console.log('array', searchResults);
+    if (watchlistArray.includes(searchResults[0])) {
+      return;
+    } else {
+      watchlistArray.push(searchResults[0]);
+    }
+    console.log(watchlistArray);
+
+    console.log('new set', watchlistwithoutduplicates);
   });
 }
