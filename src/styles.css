@@ -17,18 +17,21 @@ html {
   height: 100dvh;
 }
 body {
-  height: 100%;
-  width: 100%;
-}
-.main {
-  height: 100%;
+  height: auto;
   width: 100%;
   background-color: var(--main-Background);
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: auto;
+  width: 100%;
 }
 .mainHeader {
   background-color: var(--main-Primary);
   width: 100%;
-  height: 9%;
+  height: 4.4rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,20 +39,22 @@ body {
 .mainBody {
   color: var(--text-Color);
   width: 100%;
-  height: 82%;
-  display: flex;
-  flex-direction: column;
-  overflow-y: scroll;
-  padding-bottom: 3%;
+  height: auto;
+  padding-bottom: 6rem;
+  /* display: flex;
+  flex-direction: column; */
+  /* overflow-y: scroll; */
+  /* padding-bottom: 3%; */
 }
 .mainFooter {
-  position: relative;
+  position: fixed;
   display: flex;
 
-  height: 9%;
+  height: 10%;
   width: 100%;
+  bottom: 0%;
   background-color: var(--main-Primary);
-  margin-top: auto;
+  /* margin-top: auto; */
 }
 .navIcons {
   background-color: var(--main-Primary);
@@ -101,8 +106,8 @@ h1 {
   display: flex;
   align-items: center;
   gap: 3%;
-  min-width: 100%;
-  min-height: 30%;
+  min-width: auto;
+  min-height: 15rem;
 }
 .featuredCard {
   border-radius: 8px;
@@ -114,15 +119,63 @@ h1 {
   object-fit: contain;
   border-radius: 8px;
   background-color: var(--secondary-Background);
-  min-width: auto;
-  height: 100%;
+  min-width: 10rem;
+  height: auto;
 }
 
-.searchBar {
+.searchForm {
+  display: flex;
   height: 40%;
-  width: auto;
+  width: 55%;
+  background-color: aqua;
+}
+.searchBar {
+  height: 100%;
+  width: 80%;
 }
 .searchButton {
-  height: 40%;
-  width: 12%;
+  height: 100%;
+  width: 20%;
+}
+.movieCardExpanded {
+  overflow-y: scroll;
+  background-color: blue;
+  display: flex;
+  flex-direction: column;
+
+  min-height: 60rem;
+  width: 100%;
+}
+.posterContainer {
+  background-color: var(--main-Background);
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  height: 50%;
+  width: 100%;
+  justify-content: center;
+  flex-grow: 1;
+}
+.posterImage {
+  height: auto;
+  width: 22rem;
+}
+.movieInfo {
+  font-size: 1.2rem;
+  width: 100%;
+  height: auto;
+  background-color: var(--main-Background);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  /* align-items: center; */
+  /* justify-content: center; */
+  padding: 5%;
+  text-align: center;
+  flex-grow: 1;
+}
+.btn {
+  align-self: center;
+  height: 2rem;
+  width: 90%;
 }

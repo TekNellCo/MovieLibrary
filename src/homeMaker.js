@@ -73,11 +73,11 @@ export function containerSort(i, carouselContainer, newForYou) {
   }
 }
 
-/////populates containers with movie cards according to category and adds dataset ID to them
+/////populates containers with movie cards according to category and adds dataset title to them
 function popularMovies(container) {
   for (let i = 0; i < movieLibrary.popular.length; ++i) {
     let url = `https://image.tmdb.org/t/p/w500${movieLibrary.popular[i].poster_path}`;
-    let dataSetID = `${movieLibrary.popular[i].id}`;
+    let dataSetID = `${movieLibrary.popular[i].title}`;
     // console.log('product id');
     // console.log(movieLibrary.popular[i].id);
     // console.log(dataSetID);
@@ -88,7 +88,7 @@ function popularMovies(container) {
     // console.log(url);
     movieCards.src = `${url}`;
 
-    movieCards.dataset.id = `${dataSetID}`;
+    movieCards.dataset.title = `${dataSetID}`;
   }
 }
 

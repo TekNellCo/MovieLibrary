@@ -2,20 +2,21 @@ import './styles.css';
 import { homeBuilder } from './homeMaker.js';
 import { movieFetch } from './api.js';
 import { searchAPI } from './api.js';
+import { movieCardExpandedCreator } from './movieCardExpanded.js';
 import { searchResultsLoop } from './search.js';
 
 export const mainBody = document.querySelector('.mainBody');
 const home = document.querySelector('.home');
 const watchList = document.querySelector('.watchList');
 const searchBar = document.querySelector('.searchBar');
-const searchButton = document.querySelector('.searchButton');
+const searchForm = document.querySelector('.searchForm');
 
 ////sets the status of the page
 export let page = '';
+//container for flexwrap so when its created i can pull the created element inside other functions
 export let flexWrap;
 
 movieFetch();
-// homeBuilder();
 
 home.addEventListener('click', () => {
   if (page === 'home') {
@@ -31,15 +32,16 @@ watchList.addEventListener('click', () => {
   } else if (page !== 'watchList') {
     page = 'watchlist';
     clearMainBody();
+    movieCardExpandedCreator();
     console.log('watchlist');
   }
 });
 
-searchButton.addEventListener('click', () => {
+searchForm.addEventListener('submit', (e) => {
+  e.preventDefault();
   page = 'search';
   clearMainBody();
   searchAPI(searchBar.value);
-  flexWrapBuilder();
 });
 
 /////resets the main page
@@ -54,6 +56,7 @@ export function flexWrapBuilder() {
   mainBody.append(flexWrap);
 }
 
+//////When search bar is clicked it highlights all the text
 searchBar.addEventListener('focus', (e) => {
   e.target.select();
 });
