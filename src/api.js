@@ -1,6 +1,7 @@
 import { cloneCarouselContainer } from './homeMaker';
 import { cloneContainer } from './homeMaker';
 import { page } from './index';
+import { searchResultsLoop } from './search';
 
 export const movieLibrary = {
   popular: [],
@@ -102,8 +103,7 @@ async function fetchMoviesByCategory(category) {
     });
 }
 
-export async function searchAPI() {
-  const query = 'interstellar';
+export async function searchAPI(query) {
   const encodedQuery = encodeURIComponent(query);
   searchResults = [];
 
@@ -117,7 +117,7 @@ export async function searchAPI() {
       data.results.forEach((result) => {
         searchResults.push(result);
       });
-      console.log(searchResults);
+      searchResultsLoop();
     })
 
     .catch((error) => console.error('Error fetching data:', error));

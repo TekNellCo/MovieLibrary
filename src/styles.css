@@ -29,6 +29,9 @@ body {
   background-color: var(--main-Primary);
   width: 100%;
   height: 9%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .mainBody {
   color: var(--text-Color);
@@ -37,28 +40,63 @@ body {
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
-  padding-bottom: 4%;
+  padding-bottom: 3%;
 }
 .mainFooter {
+  position: relative;
   display: flex;
-  position: sticky;
+
   height: 9%;
   width: 100%;
   background-color: var(--main-Primary);
-  bottom: 0%;
+  margin-top: auto;
 }
 .navIcons {
   background-color: var(--main-Primary);
+  object-fit: contain;
   width: 100%;
   height: 100%;
 }
 .navIcons img {
-  width: 45%;
-  height: auto;
+  object-fit: contain;
+  width: auto;
+  height: 60%;
 }
 h1 {
   padding: 1%;
 }
+.flexWrap {
+  padding-top: 3%;
+
+  background-color: aqua;
+  align-items: flex-start;
+  padding-left: 2%;
+  gap: 3%;
+  padding-right: 2%;
+  display: flex;
+  justify-content: flex-start;
+  min-width: 100%;
+  min-height: 100%;
+  height: auto;
+  flex-wrap: wrap;
+  row-gap: 10px;
+}
+.flexCard {
+  object-fit: fill;
+  border-radius: 8px;
+  background-color: var(--secondary-Background);
+  max-width: 30%;
+  min-width: 30%;
+  width: auto;
+  height: 26%;
+}
+/* .flexCard img {
+  border-radius: 8px;
+  background-color: var(--secondary-Background);
+  min-width: 100%;
+  height: 30%;
+} */
+
 .carouselContainer {
   position: relative;
   overflow-x: scroll;
@@ -82,4 +120,13 @@ h1 {
   background-color: var(--secondary-Background);
   min-width: auto;
   height: 100%;
+}
+
+.searchBar {
+  height: 40%;
+  width: auto;
+}
+.searchButton {
+  height: 40%;
+  width: 12%;
 }
