@@ -209,3 +209,7 @@ h1 {
 .watchedButton {
   background-color: aqua;
 }
+.watchOrListHeader {
+  text-align: center;
+  font-size: 1.5rem;
+}

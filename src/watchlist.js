@@ -1,12 +1,12 @@
 import { watchlistOrWatched } from './movieCardExpanded';
-import { flexWrapBuilder } from '.';
-import { flexWrap } from '.';
+import { flexWrap, flexWrapBuilder } from '.';
+import { mainBody } from '.';
 
 export let movieMapWatchlist = new Map();
 
 //////manipulates toggle button colors and text depending if on if its in the map
 export function toggleMovieWatchlist(movie, watchListButton) {
-  console.log('watchlist button', watchListButton);
+  //   console.log('watchlist button', watchListButton);
   const movieKey = JSON.stringify(movie); // Create a unique key for the movie based on its content
   // Check if the movie is already in the Map
   if (movieMapWatchlist.has(movieKey)) {
@@ -35,6 +35,11 @@ export function toggleMovieWatchlist(movie, watchListButton) {
 
 /////creates a poster image for each title in the watchlist and appends a data ID to it
 export function watchlistBuilder() {
+  let header = document.createElement('div');
+  header.classList.add('watchOrListHeader');
+  header.textContent = 'Watchlist';
+  mainBody.append(header);
+
   flexWrapBuilder();
 
   movieMapWatchlist.forEach((movie) => {
@@ -45,14 +50,8 @@ export function watchlistBuilder() {
     poster_image.classList.add('flexCard');
     poster_image.dataset.title = movie_data_name;
     poster_image.src = `https://image.tmdb.org/t/p/w500${movie_poster}`;
+
     flexWrap.append(poster_image);
   });
-
-  //   let posterImage = document.createElement('img');
-  //   posterImage.classList.add('flexCard');
-  //   posterImage.dataset.title = `${result_name}`;
-  //   // console.log('result name', `${result_name}`);
-  //   posterImage.src = `https://image.tmdb.org/t/p/w500${poster_image}`;
-  //   mainBody.append(flexWrap);
-  //   flexWrap.append(posterImage);
+  console.log('IT WORKS 1A');
 }
