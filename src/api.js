@@ -119,8 +119,8 @@ export async function searchAPI(query) {
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log('IT WORKED');
-      console.log('movie search info', data.results[0]);
+      // console.log('IT WORKED');
+      // console.log('movie search info', data.results[0]);
       if (page === 'Movie Card') {
         // searchResults = [];
         searchResults.push(data.results[0]);
@@ -130,10 +130,10 @@ export async function searchAPI(query) {
         });
       }
       if (page === 'Movie Card') {
-        console.log('movie card expanded creator');
+        // console.log('movie card expanded creator');
         // movieObjectCreator();
         movieCardExpandedCreator();
-        console.log('watchlist');
+        // console.log('watchlist');
       } else {
         searchResultsLoop();
       }

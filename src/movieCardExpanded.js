@@ -2,16 +2,18 @@ import { mainBody } from '.';
 import moviePoster from './images/movie_poster.jpg';
 import { searchResults } from './api';
 import { page } from '.';
-import { toggleMovieWatchlist } from './watchlist';
+import { toggleMovieWatchlist, watchlistBuilder } from './watchlist';
 import { movieMapWatchlist } from './watchlist';
+import { watchedOrList } from '.';
+import { clearMainBody } from '.';
 
-export let watchlistOrWatched = '';
+export let watchlistOrWatched;
 
 export async function movieCardExpandedCreator() {
   if (page === 'Movie Card') {
     mainBody.style.cssText = 'overflow : hidden; height:60rem';
   }
-  console.log('single search result', searchResults);
+  //   console.log('single search result', searchResults);
   let poster_image = searchResults[0].backdrop_path;
   let movie_title = searchResults[0].title;
   let movie_description = searchResults[0].overview;
@@ -40,28 +42,51 @@ export async function movieCardExpandedCreator() {
   watchListButton.textContent = 'Add to watchlist';
   WatchedButton.textContent = 'Watched';
 
-  //region
+  watchListButton.classList.add('watchListButton', 'btn');
+  WatchedButton.classList.add('WatchedButton', 'btn');
 
-  console.log('search results title', searchResults[0].title);
+  //region
+  let isInWatchlist = false;
+
   movieMapWatchlist.forEach((movie) => {
-    console.log('each movie is', movie);
     if (movie.title === searchResults[0].title) {
-      watchListButton.style.cssText = 'background-color: grey';
-      watchListButton.textContent = 'Remove from watchlist';
-      console.log('TITLES MATCH');
-      console.log(
-        `watchlist title is ${movie.title}`,
-        `search result is ${searchResults[0].title}`
-      );
-    } else {
-      watchListButton.style.cssText = 'background-color:chartreuse';
-      watchListButton.textContent = 'Add to watchlist';
-      console.log(
-        `watchlist title is ${movie.title}`,
-        `search result is ${searchResults[0].title}`
-      );
+      isInWatchlist = true;
     }
   });
+  if (isInWatchlist) {
+    watchListButton.style.cssText = 'background-color: grey';
+    watchListButton.textContent = 'Remove from watchlist';
+  } else {
+    watchListButton.style.cssText = 'background-color: chartreuse';
+    watchListButton.textContent = 'Add to watchlist';
+  }
+
+  //end region
+
+  //region
+
+  //   //   console.log('search results title', searchResults[0].title);
+  //   movieMapWatchlist.forEach((movie, key) => {
+  //     console.log('movie title', movie.title, 'key', key);
+  //     console.log('each movie is', movie);
+
+  //     if (movie.title === searchResults[0].title) {
+  //       watchListButton.style.cssText = 'background-color: grey';
+  //       watchListButton.textContent = 'Remove from watchlist';
+  //       console.log('TITLES MATCH');
+  //       console.log(
+  //         `watchlist title is ${movie.title}`,
+  //         `search result is ${searchResults[0].title}`
+  //       );
+  //     } else if (movie.title !== searchResults[0].title) {
+  //       watchListButton.style.cssText = 'background-color:chartreuse';
+  //       watchListButton.textContent = 'Add to watchlist';
+  //       console.log(
+  //         `watchlist title is ${movie.title}`,
+  //         `search result is ${searchResults[0].title}`
+  //       );
+  //     }
+  //   });
 
   //region end
 
@@ -73,8 +98,6 @@ export async function movieCardExpandedCreator() {
   title.classList.add('title');
   genre.classList.add('genre');
   description.classList.add('description');
-  watchListButton.classList.add('watchListButton', 'btn');
-  WatchedButton.classList.add('WatchedButton', 'btn');
 
   mainBody.append(movieCardExpanded);
   movieCardExpanded.append(posterContainer);
@@ -91,14 +114,17 @@ export async function movieCardExpandedCreator() {
   title.textContent = `${movie_title}`;
   genre.textContent = 'Horror';
   description.textContent = `${movie_description}`;
-
+  //region #red
   backButton.addEventListener('click', () => {
     movieCardExpanded.remove();
     mainBody.style.cssText = 'overflow : scroll; height:auto';
+    if (watchedOrList === 'watched') {
+      clearMainBody();
+      watchlistBuilder();
+    }
   });
+  //region end
   watchListButton.addEventListener('click', () => {
-    console.log('array', searchResults);
-    watchlistOrWatched = 'watchlist';
     movieObjectCreator(searchResults, watchListButton);
     // let watchObject = {
     //   title: searchResults[0].title,
@@ -121,7 +147,7 @@ export async function movieCardExpandedCreator() {
 ///////////////////////////////////////////////////////
 
 export function movieObjectCreator(searchResults, watchListButton) {
-  console.log('HEY SEARCH RESULTS', searchResults);
+  //   console.log('HEY SEARCH RESULTS', searchResults);
   let watchObject = {
     title: searchResults[0].title,
     backdrop_path: searchResults[0].backdrop_path,

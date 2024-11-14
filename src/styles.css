@@ -206,6 +206,6 @@ h1 {
 .watchListButton {
   background-color: chartreuse;
 }
-.watchListButton::after {
-  background-color: red;
+.watchedButton {
+  background-color: aqua;
 }

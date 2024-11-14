@@ -9,7 +9,6 @@ export function searchResultsLoop() {
 
   searchResults.forEach((result) => {
     // console.log(result.title);
-    console.log('this is the result of a click', searchResults);
     let poster_image = result.poster_path;
     if (poster_image && poster_image !== null && poster_image !== '') {
       posterBuilder(poster_image, result.title);
