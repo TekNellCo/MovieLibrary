@@ -12,12 +12,20 @@ import { activeNav } from '.';
 import { verticalScroll } from '.';
 
 export let watchlistOrWatched;
+let mediaQuery1440 = window.matchMedia('(min-width:2560px');
 
 export async function movieCardExpandedCreator() {
-  // console.log('page', page, 'watchedorwatchlist', value.watchedOrWatchlist);
-  if (page === 'Movie Card') {
+  if (mediaQuery1440.matches && page === 'Movie Card') {
+    mainBody.style.cssText = 'overflow : hidden; height:100rem';
+  } else {
     mainBody.style.cssText = 'overflow : hidden; height:60rem';
   }
+  // console.log('page', page, 'watchedorwatchlist', value.watchedOrWatchlist);
+  //#region
+  // if (page === 'Movie Card') {
+  //   mainBody.style.cssText = 'overflow : hidden; height:60rem';
+  // }
+  //#endregion
   //   console.log('single search result', searchResults);
   let poster_image = searchResults[0].backdrop_path;
   let movie_title = searchResults[0].title;
