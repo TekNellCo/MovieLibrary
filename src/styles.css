@@ -41,6 +41,7 @@ body {
   position: relative;
   height: auto;
   width: 100%;
+  position: relative;
 }
 .mainHeader {
   background-color: var(--main-Background);
@@ -303,4 +304,52 @@ h1 {
 }
 .activeButton {
   color: red;
+}
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+
+@media (min-width: 1024px) {
+  .main {
+    flex-direction: row;
+  }
+  .mainHeader {
+    z-index: 1;
+    position: fixed;
+    width: 16.4rem;
+    height: 6.4%;
+  }
+  .mainFooter {
+    position: fixed;
+    flex-direction: column;
+    width: 16.4rem;
+    top: 4rem;
+    min-height: 93.8%;
+  }
+  .navSVG {
+    width: 20%;
+  }
+  .mainBody {
+    margin-left: 16.4rem;
+  }
+  .flexCard {
+    min-width: 20%;
+    width: 22%;
+  }
+  .posterImage {
+    width: auto;
+    max-height: 20rem;
+    height: auto;
+  }
+  .movieInfo {
+    justify-content: center;
+    align-items: center;
+  }
+  .btn {
+    width: 40%;
+    height: 2.2rem;
+  }
 }

@@ -88,7 +88,7 @@ async function fetchMoviesByCategory(category) {
     .then((data) => {
       // console.log('data info');
       // console.log(data);
-      const movies = data.results.slice(0, 5); // Get the first 5 movies
+      const movies = data.results.slice(0, 10); // Get the first 5 movies
       if (movieLibrary.romance.length > 0) {
         return;
       } else {
