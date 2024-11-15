@@ -98,3 +98,17 @@ document.addEventListener('click', (e) => {
     window.scrollTo(0, 0);
   }
 });
+
+const navBar = document.querySelectorAll('.navIcons');
+const navSVG = document.querySelectorAll('.svg');
+
+navBar.forEach((button) => {
+  button.addEventListener('click', () => {
+    navSVG.forEach((svg) => {
+      svg.classList.remove('activeButton');
+    });
+    let svgColor = button.childNodes[3];
+    svgColor.classList.add('activeButton');
+    console.log(button.childNodes[3]);
+  });
+});

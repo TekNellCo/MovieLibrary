@@ -58,10 +58,12 @@ export async function movieCardExpandedCreator() {
     }
   });
   if (isInWatchlist) {
-    watchListButton.style.cssText = 'background-color: grey';
+    watchListButton.style.cssText =
+      'background-color: var(--movie-card-button-color-inactive); color: var(--movie-card-button-text-inactive)';
     watchListButton.textContent = 'Remove from watchlist';
   } else {
-    watchListButton.style.cssText = 'background-color: chartreuse';
+    watchListButton.style.cssText =
+      'background-color: var(--movie-card-button-color-active);color: var(--movie-card-button-text-active)';
     watchListButton.textContent = 'Add to watchlist';
   }
 
@@ -75,11 +77,13 @@ export async function movieCardExpandedCreator() {
     }
   });
   if (isInWatched) {
-    watchedButton.style.cssText = 'background-color: grey';
+    watchedButton.style.cssText =
+      'background-color: var(--movie-card-button-color-inactive); color: var(--movie-card-button-text-inactive)';
     watchedButton.textContent = 'Remove from watched';
   } else {
-    watchedButton.style.cssText = 'background-color: chartreuse';
-    watchedButton.textContent = 'Add to watched';
+    watchedButton.style.cssText =
+      'background-color: var(--movie-card-button-color-active);color: var(--movie-card-button-text-active)';
+    watchedButton.textContent = 'Add to watch';
   }
   //end region
   backButton.classList.add('backButton');

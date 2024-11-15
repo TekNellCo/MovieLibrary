@@ -12,7 +12,8 @@ export function toggleMovieWatchlist(movie, watchListButton) {
   if (movieMapWatchlist.has(movieKey)) {
     // If the movie exists, remove it
     movieMapWatchlist.delete(movieKey);
-    watchListButton.style.cssText = 'background-color:chartreuse';
+    watchListButton.style.cssText =
+      'background-color: var(--movie-card-button-color-active);color: var(--movie-card-button-text-active)';
     watchListButton.textContent = 'Add to watchlist';
     console.log('Movie removed:', movie);
     // movieWatchlistTest();
@@ -20,7 +21,8 @@ export function toggleMovieWatchlist(movie, watchListButton) {
     // If the movie does not exist, add it
     movieMapWatchlist.set(movieKey, movie); // Store the movie object as the value
     console.log('Movie added:', movie);
-    watchListButton.style.cssText = 'background-color: grey';
+    watchListButton.style.cssText =
+      'background-color: var(--movie-card-button-color-inactive); color: var(--movie-card-button-text-inactive)';
     watchListButton.textContent = 'Remove from watchlist';
     // movieWatchlistTest();
     //#region

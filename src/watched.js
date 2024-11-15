@@ -11,14 +11,16 @@ export function toggleMovieWatched(movie, watchedButton) {
   if (movieMapWatched.has(movieKey)) {
     // If the movie exists, remove it
     movieMapWatched.delete(movieKey);
-    watchedButton.style.cssText = 'background-color:chartreuse';
+    watchedButton.style.cssText =
+      'background-color: var(--movie-card-button-color-active);color: var(--movie-card-button-text-active)';
     watchedButton.textContent = 'Add to watched';
     console.log('Movie removed:', movie);
   } else {
     // If the movie does not exist, add it
     movieMapWatched.set(movieKey, movie); // Store the movie object as the value
     console.log('Movie added:', movie);
-    watchedButton.style.cssText = 'background-color: grey';
+    watchedButton.style.cssText =
+      'background-color: var(--movie-card-button-color-inactive); color: var(--movie-card-button-text-inactive)';
     watchedButton.textContent = 'Remove from watched';
   }
 }

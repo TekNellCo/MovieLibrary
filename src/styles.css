@@ -8,6 +8,10 @@
   /* outline: 1px solid red; */
 }
 :root {
+  --movie-card-button-color-active: chartreuse;
+  --movie-card-button-text-active: red;
+  --movie-card-button-color-inactive: grey;
+  --movie-card-button-text-inactive: blue;
   --title-font: 400 2rem 'Alfa Slab One', serif;
   --category-font: 400 2.3rem 'Bebas Neue', sans-serif;
   --body-font: 400 1.2rem 'Titillium Web', sans-serif;
@@ -152,20 +156,26 @@ h1 {
 
 .searchForm {
   border-radius: 8px;
-  overflow: hidden;
+  /* overflow: hidden; */
+
+  /* background-color: transparent; */
+  /* background-color: red; */
+  background-color: var(--search-bar);
 
   display: flex;
   height: 60%;
   width: 70%;
 }
 .searchBar {
+  padding-left: 8px;
   color: #f8f9fcb1;
   font: var(--text-Color);
   font-size: 1.2rem;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
   border: none;
-  background-color: var(--search-bar);
+  /* background-color: var(--search-bar); */
+  background-color: transparent;
   height: 100%;
   width: 80%;
   flex: 1;
@@ -174,11 +184,13 @@ h1 {
   color: var(--placeholder-color);
 }
 .searchBar:focus {
-  border: none;
+  outline: none;
+  box-shadow: none;
 }
 .searchButton {
   border: none;
-  background-color: var(--search-bar);
+  background-color: transparent;
+
   height: 100%;
   width: 14%;
 }
@@ -252,10 +264,12 @@ h1 {
   overflow: scroll;
 }
 .watchListButton {
-  background-color: chartreuse;
+  /* color: var(--movie-card-button-text-active);
+  background-color: var(--movie-card-button-color-active); */
 }
 .watchedButton {
-  background-color: aqua;
+  /* color: var(--movie-card-button-text-active);
+  background-color: var(--movie-card-button-color-active); */
 }
 .watchOrListHeader {
   text-align: center;
@@ -267,4 +281,10 @@ h1 {
 }
 .navSVG {
   color: var(--svg-inactive);
+}
+.searchSVG {
+  background-color: transparent;
+}
+.activeButton {
+  color: red;
 }
