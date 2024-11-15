@@ -85,7 +85,7 @@ export async function movieCardExpandedCreator() {
   } else {
     watchedButton.style.cssText =
       'background-color: var(--movie-card-button-color-active);color: var(--movie-card-button-text-active)';
-    watchedButton.textContent = 'Add to watch';
+    watchedButton.textContent = 'Add to watched';
   }
   //end region
   backButton.classList.add('backButton');

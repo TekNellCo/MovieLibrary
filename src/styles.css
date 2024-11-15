@@ -63,6 +63,10 @@ body {
   /* overflow-y: scroll; */
   /* padding-bottom: 3%; */
 }
+.mainBody::-webkit-scrollbar {
+  height: 0px;
+  width: 0px;
+}
 .svg {
   color: var(--svg-color);
   object-fit: contain;
@@ -109,6 +113,7 @@ h1 {
   flex-wrap: wrap;
   row-gap: 10px;
 }
+
 .flexCard {
   object-fit: fill;
   border-radius: 8px;
@@ -254,17 +259,20 @@ h1 {
   top: 2%;
   left: 5%;
 }
-
-/* .test {
-  height: 40rem;
-} */
 .title {
   font: var(--title-font);
 }
 .description {
+  align-self: center;
+  /* background-color: red; */
   font: var(--body-font);
-  max-height: 15rem;
+  max-width: 50rem;
   overflow: scroll;
+  max-height: 20rem;
+}
+.description::-webkit-scrollbar {
+  height: 0px;
+  width: 0px;
 }
 .watchListButton {
   /* color: var(--movie-card-button-text-active);

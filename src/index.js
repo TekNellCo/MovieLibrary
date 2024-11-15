@@ -107,6 +107,7 @@ const navSVG = document.querySelectorAll('.svg');
 
 navBar.forEach((button) => {
   button.addEventListener('click', () => {
+    mainBody.style.cssText = 'overflow : scroll; height:auto';
     navSVG.forEach((svg) => {
       svg.classList.remove('activeButton');
     });
