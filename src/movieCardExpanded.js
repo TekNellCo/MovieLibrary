@@ -95,7 +95,7 @@ export async function movieCardExpandedCreator() {
   posterContainer.append(posterImage);
   posterContainer.append(movieInfo);
   movieInfo.append(title);
-  movieInfo.append(genre);
+  // movieInfo.append(genre);
   movieInfo.append(description);
   movieInfo.append(watchListButton);
   movieInfo.append(watchedButton);

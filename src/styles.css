@@ -8,10 +8,15 @@
   /* outline: 1px solid red; */
 }
 :root {
+  --title-font: 400 2rem 'Alfa Slab One', serif;
+  --category-font: 400 2.3rem 'Bebas Neue', sans-serif;
+  --body-font: 400 1.2rem 'Titillium Web', sans-serif;
   --text-Color: rgb(236, 236, 236);
   --main-Primary: Rebeccapurple;
-  --main-Background: rgb(50, 50, 50);
+  --main-Background: #0c0b10;
   --secondary-Background: rgb(160, 160, 160);
+  --svg-active: yellow;
+  --search-bar: #141414;
 }
 html {
   height: 100dvh;
@@ -22,6 +27,7 @@ body {
   background-color: var(--main-Background);
 }
 .main {
+  font: var(--body-font);
   display: flex;
   flex-direction: column;
   position: relative;
@@ -29,7 +35,7 @@ body {
   width: 100%;
 }
 .mainHeader {
-  background-color: var(--main-Primary);
+  background-color: var(--main-Background);
   width: 100%;
   height: 4.4rem;
   display: flex;
@@ -37,6 +43,7 @@ body {
   align-items: center;
 }
 .mainBody {
+  font: var(--body-font);
   position: relative;
   color: var(--text-Color);
   width: 100%;
@@ -56,11 +63,12 @@ body {
   height: 10%;
   width: 100%;
   /* bottom: 0%; */
-  background-color: var(--main-Primary);
+  background-color: var(--main-Background);
   /* margin-top: auto; */
 }
 .navIcons {
-  background-color: var(--main-Primary);
+  border: none;
+  background-color: var(--main-Background);
   object-fit: contain;
   width: 100%;
   height: 100%;
@@ -70,7 +78,14 @@ body {
   width: auto;
   height: 60%;
 }
+.svg {
+  color: var(--svg-active);
+  object-fit: contain;
+  width: auto;
+  height: 60%;
+}
 h1 {
+  font: var(--category-font);
   padding: 1%;
 }
 .flexWrap {
@@ -127,25 +142,44 @@ h1 {
 }
 
 .searchForm {
+  border-radius: 8px;
+  overflow: hidden;
+
   display: flex;
-  height: 40%;
-  width: 55%;
-  background-color: aqua;
+  height: 60%;
+  width: 70%;
 }
 .searchBar {
+  color: #f8f9fcb1;
+  font: var(--text-Color);
+  font-size: 1.2rem;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border: none;
+  background-color: var(--search-bar);
   height: 100%;
   width: 80%;
+  flex: 1;
+}
+.searchBar::placeholder {
+  color: #5e5e5e;
+}
+.searchBar:focus {
+  border: none;
+  outline: pink;
 }
 .searchButton {
+  border: none;
+  background-color: var(--search-bar);
   height: 100%;
-  width: 20%;
+  width: 14%;
 }
 .movieCardExpanded {
   z-index: 10;
   position: absolute;
   top: 0;
   overflow-y: scroll;
-  background-color: blue;
+  /* background-color: blue; */
   display: flex;
   flex-direction: column;
 
@@ -196,10 +230,14 @@ h1 {
   left: 5%;
 }
 
-.test {
+/* .test {
   height: 40rem;
+} */
+.title {
+  font: var(--title-font);
 }
 .description {
+  font: var(--body-font);
   max-height: 15rem;
   overflow: scroll;
 }
@@ -212,4 +250,8 @@ h1 {
 .watchOrListHeader {
   text-align: center;
   font-size: 1.5rem;
+}
+.appIconSVG {
+  margin-left: -6%;
+  margin-right: 4%;
 }
