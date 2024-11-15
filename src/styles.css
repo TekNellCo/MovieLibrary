@@ -8,10 +8,10 @@
   /* outline: 1px solid red; */
 }
 :root {
-  --movie-card-button-color-active: chartreuse;
-  --movie-card-button-text-active: red;
-  --movie-card-button-color-inactive: grey;
-  --movie-card-button-text-inactive: blue;
+  --movie-card-button-color-active: red;
+  --movie-card-button-text-active: black;
+  --movie-card-button-color-inactive: #5e5e5e;
+  --movie-card-button-text-inactive: white;
   --title-font: 400 2rem 'Alfa Slab One', serif;
   --category-font: 400 2.3rem 'Bebas Neue', sans-serif;
   --body-font: 400 1.2rem 'Titillium Web', sans-serif;
@@ -238,6 +238,9 @@ h1 {
   flex-grow: 1;
 }
 .btn {
+  font: var(--body-font);
+  font-size: 1.2rem;
+  font-weight: 500;
   border-radius: 8px;
   align-self: center;
   border: none;

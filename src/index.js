@@ -10,6 +10,7 @@ import {
 } from './movieCardExpanded.js';
 import { searchResultsLoop } from './search.js';
 
+export let verticalScroll;
 export const mainBody = document.querySelector('.mainBody');
 const home = document.querySelector('.home');
 const watchList = document.querySelector('.watchList');
@@ -23,7 +24,7 @@ export let state = {
 export let value = {
   watchedOrWatchlist: '',
 };
-
+export let activeNav;
 ////sets the status of the page
 export let page = '';
 //container for flexwrap so when its created i can pull the created element inside other functions
@@ -95,6 +96,8 @@ document.addEventListener('click', (e) => {
     page = 'Movie Card';
     console.log(page);
     searchAPI(e.target.dataset.title);
+    verticalScroll = window.scrollY;
+    // console.log('vertical scroll', verticalScroll);
     window.scrollTo(0, 0);
   }
 });
@@ -110,5 +113,7 @@ navBar.forEach((button) => {
     let svgColor = button.childNodes[3];
     svgColor.classList.add('activeButton');
     console.log(button.childNodes[3]);
+    activeNav = button.dataset.nav;
+    // console.log(activeNav);
   });
 });

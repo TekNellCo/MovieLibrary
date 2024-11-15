@@ -8,11 +8,13 @@ import { movieMapWatchlist } from './watchlist';
 import { clearMainBody } from '.';
 import { movieMapWatched, watchedBuilder } from './watched';
 import { toggleMovieWatched } from './watched';
+import { activeNav } from '.';
+import { verticalScroll } from '.';
 
 export let watchlistOrWatched;
 
 export async function movieCardExpandedCreator() {
-  console.log('page', page, 'watchedorwatchlist', value.watchedOrWatchlist);
+  // console.log('page', page, 'watchedorwatchlist', value.watchedOrWatchlist);
   if (page === 'Movie Card') {
     mainBody.style.cssText = 'overflow : hidden; height:60rem';
   }
@@ -112,12 +114,15 @@ export async function movieCardExpandedCreator() {
   description.textContent = `${movie_description}`;
   //region #red
   backButton.addEventListener('click', () => {
-    window.scrollTo(0, 0);
     mainBody.style.cssText = 'overflow : scroll; height:auto';
-    if (value.watchedOrWatchlist === 'watchlist') {
+    window.scrollTo(0, verticalScroll);
+    if (value.watchedOrWatchlist === 'watchlist' && activeNav === 'watchlist') {
       clearMainBody();
       watchlistBuilder();
-    } else if (value.watchedOrWatchlist === 'watched') {
+    } else if (
+      value.watchedOrWatchlist === 'watched' &&
+      activeNav === 'watched'
+    ) {
       clearMainBody();
       watchedBuilder();
     } else {
@@ -125,6 +130,15 @@ export async function movieCardExpandedCreator() {
     }
   });
   //region end
+  //#region
+  // backButton.addEventListener('click', () => {
+  //   window.scrollTo(0, 0);
+  //   mainBody.style.cssText = 'overflow : scroll; height:auto';
+  //   if(activeNav === home){
+
+  //   }
+  // });
+  //#endregion
   watchListButton.addEventListener('click', () => {
     value.watchedOrWatchlist = 'watchlist';
     movieObjectCreator(searchResults, watchListButton);
