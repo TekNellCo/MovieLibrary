@@ -11,13 +11,17 @@
   --title-font: 400 2rem 'Alfa Slab One', serif;
   --category-font: 400 2.3rem 'Bebas Neue', sans-serif;
   --body-font: 400 1.2rem 'Titillium Web', sans-serif;
-  --text-Color: rgb(236, 236, 236);
+  --text-Color: #ececec;
   --main-Primary: Rebeccapurple;
   --main-Background: #0c0b10;
   --secondary-Background: rgb(160, 160, 160);
+  --svg-inactive: #5e5e5e;
   --svg-active: yellow;
+  --svg-color: yellow;
   --search-bar: #141414;
+  --placeholder-color: #5e5e5e;
 }
+
 html {
   height: 100dvh;
 }
@@ -55,7 +59,14 @@ body {
   /* overflow-y: scroll; */
   /* padding-bottom: 3%; */
 }
+.svg {
+  color: var(--svg-color);
+  object-fit: contain;
+  width: auto;
+  height: 60%;
+}
 .mainFooter {
+  background-color: var(--main-Background);
   position: fixed;
   display: flex;
   bottom: 0px;
@@ -63,12 +74,12 @@ body {
   height: 10%;
   width: 100%;
   /* bottom: 0%; */
-  background-color: var(--main-Background);
+
   /* margin-top: auto; */
 }
 .navIcons {
   border: none;
-  background-color: var(--main-Background);
+  background-color: transparent;
   object-fit: contain;
   width: 100%;
   height: 100%;
@@ -78,12 +89,7 @@ body {
   width: auto;
   height: 60%;
 }
-.svg {
-  color: var(--svg-active);
-  object-fit: contain;
-  width: auto;
-  height: 60%;
-}
+
 h1 {
   font: var(--category-font);
   padding: 1%;
@@ -127,6 +133,9 @@ h1 {
   min-width: auto;
   min-height: 15rem;
 }
+.carouselContainer::-webkit-scrollbar {
+  height: 0px;
+}
 .featuredCard {
   border-radius: 8px;
   background-color: var(--secondary-Background);
@@ -162,11 +171,10 @@ h1 {
   flex: 1;
 }
 .searchBar::placeholder {
-  color: #5e5e5e;
+  color: var(--placeholder-color);
 }
 .searchBar:focus {
   border: none;
-  outline: pink;
 }
 .searchButton {
   border: none;
@@ -218,8 +226,10 @@ h1 {
   flex-grow: 1;
 }
 .btn {
+  border-radius: 8px;
   align-self: center;
-  height: 2rem;
+  border: none;
+  height: 2.3rem;
   width: 90%;
 }
 .backButton {
@@ -254,4 +264,7 @@ h1 {
 .appIconSVG {
   margin-left: -6%;
   margin-right: 4%;
+}
+.navSVG {
+  color: var(--svg-inactive);
 }

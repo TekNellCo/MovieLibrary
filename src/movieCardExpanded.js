@@ -47,6 +47,7 @@ export async function movieCardExpandedCreator() {
 
   watchListButton.classList.add('watchListButton', 'btn');
   watchedButton.classList.add('WatchedButton', 'btn');
+  backButton.classList.add('btn');
 
   //region
   let isInWatchlist = false;
@@ -75,10 +76,10 @@ export async function movieCardExpandedCreator() {
   });
   if (isInWatched) {
     watchedButton.style.cssText = 'background-color: grey';
-    watchedButton.textContent = 'Remove from watchlist';
+    watchedButton.textContent = 'Remove from watched';
   } else {
     watchedButton.style.cssText = 'background-color: chartreuse';
-    watchedButton.textContent = 'Add to watchlist';
+    watchedButton.textContent = 'Add to watched';
   }
   //end region
   backButton.classList.add('backButton');
