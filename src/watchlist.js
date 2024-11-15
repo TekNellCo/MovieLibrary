@@ -23,15 +23,10 @@ export function toggleMovieWatchlist(movie, watchListButton) {
     watchListButton.style.cssText = 'background-color: grey';
     watchListButton.textContent = 'Remove from watchlist';
     // movieWatchlistTest();
+    //#region
+    //#endregion
   }
 }
-
-//////runs through the watchlist to populate the new watchlist
-// function movieWatchlistTest() {
-//   movieMapWatchlist.forEach((movie) => {
-//     console.log('movie objects', movie);
-//   });
-// }
 
 /////creates a poster image for each title in the watchlist and appends a data ID to it
 export function watchlistBuilder() {
@@ -55,3 +50,7 @@ export function watchlistBuilder() {
   });
   console.log('IT WORKS 1A');
 }
+
+//#region
+
+//#endregion

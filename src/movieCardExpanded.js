@@ -108,6 +108,7 @@ export async function movieCardExpandedCreator() {
   //region #red
   backButton.addEventListener('click', () => {
     window.scrollTo(0, 0);
+    mainBody.style.cssText = 'overflow : scroll; height:auto';
     if (value.watchedOrWatchlist === 'watchlist') {
       clearMainBody();
       watchlistBuilder();
@@ -117,7 +118,6 @@ export async function movieCardExpandedCreator() {
     } else {
       movieCardExpanded.remove();
     }
-    mainBody.style.cssText = 'overflow : scroll; height:auto';
   });
   //region end
   watchListButton.addEventListener('click', () => {
@@ -135,6 +135,7 @@ export async function movieCardExpandedCreator() {
 ///////////////////////////////////////////////////////
 
 //region
+////tahes the searched movie and turns it into an abject then pushes it into the respective list
 export function movieObjectCreator(searchResults, listButton) {
   console.log('HEY SEARCH RESULTS', searchResults);
 
@@ -154,19 +155,3 @@ export function movieObjectCreator(searchResults, listButton) {
   //   console.log(watchObject);
 }
 //end region
-// Test data
-// let movie1 = { title: 'Movie 1', year: 2023 };
-// let movie2 = { title: 'Movie 2', year: 2021 };
-// let movie3 = { title: 'Movie 3', year: 2022 };
-// let movie4 = { title: 'Movie 1', year: 2023 }; // Same content as movie1
-// // Adding movies to the Map
-// toggleMovie(movie1); // Movie added
-// toggleMovie(movie2); // Movie added
-// toggleMovie(movie3); // Movie added
-// // Trying to add a duplicate (movie4, which is the same as movie1)
-// toggleMovie(movie4); // Movie removed (toggle behavior)
-// console.log(movieMap); // Map should only contain movie2 and movie3 now
-// // Accessing movies in the Map:
-// for (let [key, movie] of movieMap) {
-//   console.log('Movie in map:', movie);
-// }

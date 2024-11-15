@@ -69,7 +69,7 @@ export async function movieFetch() {
   ];
 
   const fetchPromisesArray = categories.map((category) => {
-    fetchMoviesByCategory(category); // Return the promise to ensure Promise.all works
+    return fetchMoviesByCategory(category); // Return the promise to ensure Promise.all works
   });
   try {
     // Wait for all fetch operations to complete
@@ -141,44 +141,3 @@ export async function searchAPI(query) {
 
     .catch((error) => console.error('Error fetching data:', error));
 }
-
-//  if (page === 'watchlist') {
-//    if (hasRun === false) {
-//      hasRun = true;
-//      await searchAPI(hasRun);
-//      hasRun = false;
-//      return;
-//    }
-//  }
-
-// function fetchMoviesByCategory(category) {
-//   return fetch(category.url, options)
-//     .then((response) => {
-//       if (!response.ok) {
-//         console.error(`Error fetching category: ${category.name}`);
-//         throw new Error(`Failed to fetch category: ${category.name}`);
-//       }
-//       return response.json();
-//     })
-//     .then((response) => {
-//       // Loop through the first 5 movies (or more if needed)
-//       for (let i = 0; i < 5; i++) {
-//         let movie = {
-//           name: response.results[i].title,
-//           description: response.results[i].overview,
-//           poster: `https://image.tmdb.org/t/p/w500${response.results[i].poster_path}`,
-//           id: response.results[i].id,
-//         };
-
-//         // Check if the category exists in movieLibrary and push the movie to the corresponding array
-//         if (movieLibrary[category.name]) {
-//           movieLibrary[category.name].push(movie);
-//         } else {
-//           console.error(`Category ${category.name} not found in movieLibrary`);
-//         }
-//       }
-//     })
-//     .catch((error) => {
-//       console.error(`Error processing category ${category.name}:`, error);
-//     });
-// }
