@@ -37,6 +37,10 @@ html[data-theme='dark'] {
   --svg-color: white;
   --movie-card-button-color-active: #7410db;
 }
+html::-webkit-scrollbar {
+  height: 0px;
+  width: 0px;
+}
 body {
   height: auto;
   width: 100%;
