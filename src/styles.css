@@ -26,7 +26,7 @@
   --placeholder-color: #5e5e5e;
 }
 
-#242424 html[data-theme='light'] {
+html[data-theme='light'] {
   height: 100dvh;
 }
 html[data-theme='dark'] {
@@ -86,7 +86,6 @@ body {
   position: fixed;
   display: flex;
   bottom: 0px;
-
   height: 10%;
   width: 100%;
   /* bottom: 0%; */
@@ -187,7 +186,8 @@ h1 {
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
   border: none;
-  /* background-color: var(--search-bar); */
+  background-color: var(--search-bar);
+
   height: 100%;
   width: 80%;
   flex: 1;
@@ -312,7 +312,6 @@ h1 {
 .activeButton {
   color: var(--svg-active);
 }
-
 /*  */
 /*  */
 /* Using this to seperate so i dont get mixed up */

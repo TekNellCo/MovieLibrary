@@ -126,6 +126,6 @@ navBar.forEach((button) => {
   });
 });
 
-document.addEventListener('mousedown', function (e) {
-  e.preventDefault(); // This can block scrolling
-});
+// document.addEventListener('mousedown', function (e) {
+//   e.preventDefault(); // This can block scrolling
+// });
