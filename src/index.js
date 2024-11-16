@@ -138,3 +138,13 @@ navBar.forEach((button) => {
     // console.log(activeNav);
   });
 });
+document.addEventListener('mousedown', function (e) {
+  if (
+    e.target.classList.contains('searchBar') ||
+    e.target.classList === 'searchBar'
+  ) {
+    return; // Allow default behavior for the search bar
+  }
+
+  e.preventDefault(); // Prevent default for all other elements
+});
