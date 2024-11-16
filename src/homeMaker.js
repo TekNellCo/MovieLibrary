@@ -28,6 +28,51 @@ export function cloneContainer() {
     mainBody.append(carouselContainer);
     //////runs the containersorter  while passing in the container class
     containerSort(i, carouselContainer, newForYou);
+
+    //#region
+    /////adds scrolling to browsers for carousel containers
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    let isDragging = false;
+
+    carouselContainer.addEventListener('mousedown', (e) => {
+      isDown = true;
+      isDragging = false; // Reset dragging flag
+      startX = e.pageX - carouselContainer.offsetLeft;
+      scrollLeft = carouselContainer.scrollLeft;
+    });
+
+    carouselContainer.addEventListener('mouseleave', () => {
+      isDown = false;
+    });
+
+    carouselContainer.addEventListener('mouseup', () => {
+      isDown = false;
+    });
+
+    carouselContainer.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - carouselContainer.offsetLeft;
+      const walk = (x - startX) * 1; // Adjust scrolling speed
+      carouselContainer.scrollLeft = scrollLeft - walk;
+
+      // If the cursor moves significantly, mark it as dragging
+      if (Math.abs(x - startX) > 5) {
+        isDragging = true;
+      }
+    });
+
+    // Suppress clicks if a drag occurred
+    carouselContainer.addEventListener('click', (e) => {
+      if (isDragging) {
+        e.preventDefault(); // Cancel the click event
+        e.stopImmediatePropagation(); // Stop the click from propagating
+      }
+    });
+
+    //#endregion
   }
 }
 // endregion

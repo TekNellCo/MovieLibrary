@@ -313,13 +313,6 @@ h1 {
 /*  */
 
 @media (min-width: 1024px) {
-  .carouselContainer::-webkit-scrollbar {
-    height: 1rem;
-    background-color: #141414;
-  }
-  .carouselContainer::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 0, 0, 0.164);
-  }
   .main {
     flex-direction: row;
   }
