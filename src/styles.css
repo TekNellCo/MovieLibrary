@@ -188,7 +188,6 @@ h1 {
   border-bottom-left-radius: 8px;
   border: none;
   /* background-color: var(--search-bar); */
-  background-color: transparent;
   height: 100%;
   width: 80%;
   flex: 1;
@@ -313,6 +312,7 @@ h1 {
 .activeButton {
   color: var(--svg-active);
 }
+
 /*  */
 /*  */
 /* Using this to seperate so i dont get mixed up */

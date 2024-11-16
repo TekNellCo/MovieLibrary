@@ -94,6 +94,7 @@ export function flexWrapBuilder() {
 
 //////When search bar is clicked it highlights all the text
 searchBar.addEventListener('focus', (e) => {
+  console.log('searchbar');
   e.target.select();
 });
 
