@@ -10,7 +10,7 @@
 :root {
   --movie-card-button-color-active: red;
   --movie-card-button-text-active: black;
-  --movie-card-button-color-inactive: #5e5e5e;
+  --movie-card-button-color-inactive: #2e2e2e;
   --movie-card-button-text-inactive: white;
   --title-font: 400 2rem 'Alfa Slab One', serif;
   --category-font: 400 2.3rem 'Bebas Neue', sans-serif;
@@ -20,14 +20,21 @@
   --main-Background: #0c0b10;
   --secondary-Background: rgb(160, 160, 160);
   --svg-inactive: #5e5e5e;
-  --svg-active: yellow;
+  --svg-active: red;
   --svg-color: yellow;
   --search-bar: #141414;
   --placeholder-color: #5e5e5e;
 }
 
-html {
+#242424 html[data-theme='light'] {
   height: 100dvh;
+}
+html[data-theme='dark'] {
+  --search-bar: #2c2c2c;
+  --main-Background: #1c1c1e;
+  --svg-active: #7410db;
+  --svg-color: white;
+  --movie-card-button-color-active: #7410db;
 }
 body {
   height: auto;
@@ -259,6 +266,7 @@ h1 {
   width: 90%;
 }
 .backButton {
+  background-color: var(--movie-card-button-color-inactive);
   height: 2rem;
   width: 90%;
   align-self: center;
@@ -303,7 +311,7 @@ h1 {
   background-color: transparent;
 }
 .activeButton {
-  color: red;
+  color: var(--svg-active);
 }
 /*  */
 /*  */
@@ -339,6 +347,9 @@ h1 {
     margin-left: 16.4rem;
     padding-bottom: 2rem;
   }
+  .carouselContainer {
+    gap: 1.4%;
+  }
   .flexCard {
     min-width: 20%;
     width: 22%;
@@ -367,6 +378,9 @@ h1 {
 @media (min-width: 1920px) {
   .searchBar {
     font-size: 1.2rem;
+  }
+  .carouselContainer {
+    gap: 1%;
   }
 }
 /*  */

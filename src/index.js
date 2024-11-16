@@ -4,12 +4,9 @@ import { movieFetch } from './api.js';
 import { searchAPI } from './api.js';
 import { watchlistBuilder } from './watchlist.js';
 import { watchedBuilder } from './watched.js';
-import {
-  movieCardExpandedCreator,
-  watchlistOrWatched,
-} from './movieCardExpanded.js';
-import { searchResultsLoop } from './search.js';
+// import { themeToggle } from './theme.js';
 
+let htmlDataset = document.documentElement;
 export let verticalScroll;
 export const mainBody = document.querySelector('.mainBody');
 const home = document.querySelector('.home');
@@ -17,6 +14,7 @@ const watchList = document.querySelector('.watchList');
 const watched = document.querySelector('.watched');
 const searchBar = document.querySelector('.searchBar');
 const searchForm = document.querySelector('.searchForm');
+const themeBtn = document.querySelector('.theme');
 export let state = {
   watchedOrList: '',
 };
@@ -65,6 +63,15 @@ watched.addEventListener('click', () => {
   }
 });
 
+//#region
+themeBtn.addEventListener('click', () => {
+  if (htmlDataset.dataset.theme === 'light') {
+    htmlDataset.dataset.theme = 'dark';
+  } else if (htmlDataset.dataset.theme === 'dark') {
+    htmlDataset.dataset.theme = 'light';
+  }
+});
+//#endregion
 searchForm.addEventListener('submit', (e) => {
   e.preventDefault();
   page = 'search';
@@ -98,7 +105,6 @@ document.addEventListener('click', (e) => {
     searchAPI(e.target.dataset.title);
     verticalScroll = window.scrollY;
     // console.log('vertical scroll', verticalScroll);
-    window.scrollTo(0, 0);
   }
 });
 
