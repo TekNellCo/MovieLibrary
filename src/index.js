@@ -125,7 +125,3 @@ navBar.forEach((button) => {
     // console.log(activeNav);
   });
 });
-
-// document.addEventListener('mousedown', function (e) {
-//   e.preventDefault(); // This can block scrolling
-// });
