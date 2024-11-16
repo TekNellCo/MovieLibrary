@@ -28,7 +28,21 @@ export let page = '';
 //container for flexwrap so when its created i can pull the created element inside other functions
 export let flexWrap;
 
-movieFetch();
+/////after dom content is loaded initiall runs the homebuilder to populate the page with movies
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    if (page === 'home') {
+    } else if (page !== 'home') {
+      page = 'home';
+      value.watchedOrWatchlist = '';
+      clearMainBody();
+      homeBuilder();
+    }
+    console.log('Movies fetched successfully on page load.');
+  } catch (error) {
+    console.error('Error initializing movieFetch:', error);
+  }
+});
 
 home.addEventListener('click', () => {
   if (page === 'home') {

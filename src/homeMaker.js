@@ -5,8 +5,8 @@ import { movieLibrary } from './api';
 
 let genreID;
 
-export function homeBuilder() {
-  movieFetch();
+export async function homeBuilder() {
+  await movieFetch();
   cloneContainer();
 }
 

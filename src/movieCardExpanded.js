@@ -21,11 +21,7 @@ export async function movieCardExpandedCreator() {
     mainBody.style.cssText = 'overflow : hidden; height:60rem';
   }
   // console.log('page', page, 'watchedorwatchlist', value.watchedOrWatchlist);
-  //#region
-  // if (page === 'Movie Card') {
-  //   mainBody.style.cssText = 'overflow : hidden; height:60rem';
-  // }
-  //#endregion
+
   //   console.log('single search result', searchResults);
   let poster_image = searchResults[0].backdrop_path;
   let movie_title = searchResults[0].title;
@@ -54,48 +50,52 @@ export async function movieCardExpandedCreator() {
 
   watchListButton.textContent = 'Add to watchlist';
   watchedButton.textContent = 'Watched';
-
   watchListButton.classList.add('watchListButton', 'btn');
-  watchedButton.classList.add('WatchedButton', 'btn');
+  watchedButton.classList.add('watchedButton', 'btn');
   backButton.classList.add('btn');
 
-  //region
-  let isInWatchlist = false;
+  //#region
+  const watchlistMovies =
+    JSON.parse(localStorage.getItem('watchlistMovies')) || [];
 
-  movieMapWatchlist.forEach((movie) => {
-    if (movie.title === searchResults[0].title) {
-      isInWatchlist = true;
-    }
-  });
-  if (isInWatchlist) {
+  // Check if the movie is already in the watched list (using its unique ID or a key property)
+  const watchlistMovieExists = watchlistMovies.some(
+    (storedMovie) => storedMovie.title === searchResults[0].title
+  );
+
+  // Apply button style and text based on whether the movie is in watched list
+  if (watchlistMovieExists) {
     watchListButton.style.cssText =
       'background-color: var(--movie-card-button-color-inactive); color: var(--movie-card-button-text-inactive)';
     watchListButton.textContent = 'Remove from watchlist';
   } else {
     watchListButton.style.cssText =
-      'background-color: var(--movie-card-button-color-active);color: var(--movie-card-button-text-active)';
+      'background-color: var(--movie-card-button-color-active); color: var(--movie-card-button-text-active)';
     watchListButton.textContent = 'Add to watchlist';
   }
 
-  //end region
-  //region
-  let isInWatched = false;
+  //#endregion
 
-  movieMapWatched.forEach((movie) => {
-    if (movie.title === searchResults[0].title) {
-      isInWatched = true;
-    }
-  });
-  if (isInWatched) {
+  //#region
+  const watchedMovies = JSON.parse(localStorage.getItem('watchedMovies')) || [];
+
+  // Check if the movie is already in the watched list (using its unique ID or a key property)
+  const movieExists = watchedMovies.some(
+    (storedMovie) => storedMovie.title === searchResults[0].title
+  );
+
+  // Apply button style and text based on whether the movie is in watched list
+  if (movieExists) {
     watchedButton.style.cssText =
       'background-color: var(--movie-card-button-color-inactive); color: var(--movie-card-button-text-inactive)';
     watchedButton.textContent = 'Remove from watched';
   } else {
     watchedButton.style.cssText =
-      'background-color: var(--movie-card-button-color-active);color: var(--movie-card-button-text-active)';
+      'background-color: var(--movie-card-button-color-active); color: var(--movie-card-button-text-active)';
     watchedButton.textContent = 'Add to watched';
   }
-  //end region
+  //#endregion
+
   backButton.classList.add('backButton');
   movieCardExpanded.classList.add('movieCardExpanded');
   posterContainer.classList.add('posterContainer');
@@ -139,15 +139,7 @@ export async function movieCardExpandedCreator() {
     }
   });
   //region end
-  //#region
-  // backButton.addEventListener('click', () => {
-  //   window.scrollTo(0, 0);
-  //   mainBody.style.cssText = 'overflow : scroll; height:auto';
-  //   if(activeNav === home){
 
-  //   }
-  // });
-  //#endregion
   watchListButton.addEventListener('click', () => {
     value.watchedOrWatchlist = 'watchlist';
     movieObjectCreator(searchResults, watchListButton);
@@ -184,3 +176,24 @@ export function movieObjectCreator(searchResults, listButton) {
   //   console.log(watchObject);
 }
 //end region
+
+export function checkIfMovieIsWatched(movie, watchedButton) {
+  // Retrieve the watched movies list from localStorage or initialize it as an empty array
+  const watchedMovies = JSON.parse(localStorage.getItem('watchedMovies')) || [];
+
+  // Check if the movie is already in the watched list (using its unique ID or a key property)
+  const movieExists = watchedMovies.some(
+    (storedMovie) => storedMovie.id === movie.id
+  );
+
+  // Apply button style and text based on whether the movie is in watched list
+  if (movieExists) {
+    watchedButton.style.cssText =
+      'background-color: var(--movie-card-button-color-inactive); color: var(--movie-card-button-text-inactive)';
+    watchedButton.textContent = 'Remove from watched';
+  } else {
+    watchedButton.style.cssText =
+      'background-color: var(--movie-card-button-color-active); color: var(--movie-card-button-text-active)';
+    watchedButton.textContent = 'Add to watched';
+  }
+}
