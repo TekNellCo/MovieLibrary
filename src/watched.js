@@ -1,30 +1,44 @@
 import { flexWrap, flexWrapBuilder } from '.';
 import { mainBody } from '.';
 
+//#region
 export let movieMapWatched = new Map();
 
-//////manipulates toggle button colors and text depending if on if its in the map
+//#endregion
+//#region
 export function toggleMovieWatched(movie, watchedButton) {
-  console.log('watchled button', watchedButton);
-  const movieKey = JSON.stringify(movie); // Create a unique key for the movie based on its content
-  // Check if the movie is already in the Map
-  if (movieMapWatched.has(movieKey)) {
-    // If the movie exists, remove it
-    movieMapWatched.delete(movieKey);
+  console.log('watched button', watchedButton);
+
+  // Retrieve the watched movies list from localStorage or initialize it as an empty array
+  let watchedMovies = JSON.parse(localStorage.getItem('watchedMovies')) || [];
+
+  // Check if the movie is already in the watched list (using its unique ID or a key property)
+  const movieExists = watchedMovies.some(
+    (storedMovie) => storedMovie.title === movie.title
+  );
+
+  if (movieExists) {
+    // Remove the movie if it exists
+    watchedMovies = watchedMovies.filter(
+      (storedMovie) => storedMovie.title !== movie.title
+    );
+    localStorage.setItem('watchedMovies', JSON.stringify(watchedMovies));
     watchedButton.style.cssText =
-      'background-color: var(--movie-card-button-color-active);color: var(--movie-card-button-text-active)';
+      'background-color: var(--movie-card-button-color-active); color: var(--movie-card-button-text-active)';
     watchedButton.textContent = 'Add to watched';
-    console.log('Movie removed:', movie);
+    console.log('Movie removed from watched:', movie);
   } else {
-    // If the movie does not exist, add it
-    movieMapWatched.set(movieKey, movie); // Store the movie object as the value
-    console.log('Movie added:', movie);
+    // Add the movie if it doesn't exist
+    watchedMovies.push(movie);
+    localStorage.setItem('watchedMovies', JSON.stringify(watchedMovies));
     watchedButton.style.cssText =
       'background-color: var(--movie-card-button-color-inactive); color: var(--movie-card-button-text-inactive)';
     watchedButton.textContent = 'Remove from watched';
+    console.log('Movie added to watched:', movie);
   }
 }
 
+//#endregion
 /////creates a poster image for each title in the watched and appends a data ID to it
 export function watchedBuilder() {
   let header = document.createElement('div');
@@ -34,15 +48,20 @@ export function watchedBuilder() {
 
   flexWrapBuilder();
 
-  movieMapWatched.forEach((movie) => {
-    let movie_poster = movie.poster_path;
-    let movie_data_name = movie.title;
-    console.log('movie poster path', movie_poster, movie_data_name);
+  getWatchedMovies();
+}
+
+export function getWatchedMovies() {
+  const watchedMovies = JSON.parse(localStorage.getItem('watchedMovies')) || [];
+  for (let i = 0; i < watchedMovies.length; i++) {
+    console.log('watched movies storage', watchedMovies[i].title);
+    let movie_poster = watchedMovies[i].poster_path;
+    let movie_data_name = watchedMovies[i].title;
     let poster_image = document.createElement('img');
     poster_image.classList.add('flexCard');
     poster_image.dataset.title = movie_data_name;
     poster_image.src = `https://image.tmdb.org/t/p/w500${movie_poster}`;
     flexWrap.append(poster_image);
-  });
-  console.log('IT WORKS 1B');
+    // });
+  }
 }

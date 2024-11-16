@@ -288,12 +288,12 @@ h1 {
   width: 0px;
 }
 .watchListButton {
-  /* color: var(--movie-card-button-text-active);
-  background-color: var(--movie-card-button-color-active); */
+  /* background-color: var(--movie-card-button-color-active);
+  color: var(--movie-card-button-text-active); */
 }
 .watchedButton {
-  /* color: var(--movie-card-button-text-active);
-  background-color: var(--movie-card-button-color-active); */
+  /* background-color: var(--movie-card-button-color-active);
+  color: var(--movie-card-button-text-active); */
 }
 .watchOrListHeader {
   text-align: center;
@@ -311,6 +311,15 @@ h1 {
 }
 .activeButton {
   color: var(--svg-active);
+}
+
+.activeWatchedOrWatchlist {
+  background-color: red;
+  color: black;
+}
+.inActiveWatchedOrWatchlist {
+  background-color: pink;
+  color: white;
 }
 /*  */
 /*  */
