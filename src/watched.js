@@ -9,7 +9,7 @@ export let movieMapWatched = new Map();
 export function toggleMovieWatched(movie, watchedButton) {
   console.log('watched button', watchedButton);
 
-  // Retrieve the watched movies list from localStorage or initialize it as an empty array
+  // pull the watched movies list from localStorage or make an empty array
   let watchedMovies = JSON.parse(localStorage.getItem('watchedMovies')) || [];
 
   // Check if the movie is already in the watched list (using its unique ID or a key property)

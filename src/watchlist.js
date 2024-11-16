@@ -1,4 +1,3 @@
-import { watchlistOrWatched } from './movieCardExpanded';
 import { flexWrap, flexWrapBuilder } from '.';
 import { mainBody } from '.';
 
@@ -6,7 +5,7 @@ export let movieMapWatchlist = new Map();
 
 //#region
 export function toggleMovieWatchlist(movie, watchListButton) {
-  // Retrieve the watched movies list from localStorage or initialize it as an empty array
+  // pull the watched movies list from localStorage or make an  array
   let watchlistMovies =
     JSON.parse(localStorage.getItem('watchlistMovies')) || [];
 
@@ -59,10 +58,5 @@ export function getWatchedMovies() {
     poster_image.dataset.title = movie_data_name;
     poster_image.src = `https://image.tmdb.org/t/p/w500${movie_poster}`;
     flexWrap.append(poster_image);
-    // });
   }
 }
-
-//#region
-
-//#endregion

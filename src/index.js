@@ -1,6 +1,5 @@
 import './styles.css';
 import { homeBuilder } from './homeMaker.js';
-import { movieFetch } from './api.js';
 import { searchAPI } from './api.js';
 import { watchlistBuilder } from './watchlist.js';
 import { watchedBuilder } from './watched.js';

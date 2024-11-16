@@ -1,13 +1,6 @@
-import { cloneCarouselContainer } from './homeMaker';
-import { cloneContainer } from './homeMaker';
 import { page } from './index';
 import { searchResultsLoop } from './search';
-import {
-  movieCardExpandedCreator,
-  movieObjectMaker,
-} from './movieCardExpanded';
-import { clearMainBody } from './index';
-import { movieObjectCreator } from './movieCardExpanded';
+import { movieCardExpandedCreator } from './movieCardExpanded';
 
 export const movieLibrary = {
   popular: [],
@@ -86,8 +79,6 @@ async function fetchMoviesByCategory(category) {
   return fetch(category.url, options)
     .then((res) => res.json())
     .then((data) => {
-      // console.log('data info');
-      // console.log(data);
       const movies = data.results.slice(0, 15); // Get the first 5 movies
       if (movieLibrary.romance.length > 0) {
         return;
@@ -119,10 +110,7 @@ export async function searchAPI(query) {
   )
     .then((response) => response.json())
     .then((data) => {
-      // console.log('IT WORKED');
-      // console.log('movie search info', data.results[0]);
       if (page === 'Movie Card') {
-        // searchResults = [];
         searchResults.push(data.results[0]);
       } else {
         data.results.forEach((result) => {
@@ -130,10 +118,7 @@ export async function searchAPI(query) {
         });
       }
       if (page === 'Movie Card') {
-        // console.log('movie card expanded creator');
-        // movieObjectCreator();
         movieCardExpandedCreator();
-        // console.log('watchlist');
       } else {
         searchResultsLoop();
       }
