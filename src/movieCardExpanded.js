@@ -1,6 +1,5 @@
 import { value } from '.';
-import { mainBody, state } from '.';
-import moviePoster from './images/movie_poster.jpg';
+import { mainBody } from '.';
 import { searchResults } from './api';
 import { page } from '.';
 import { toggleMovieWatchlist, watchlistBuilder } from './watchlist';
@@ -20,7 +19,6 @@ export async function movieCardExpandedCreator() {
   } else {
     mainBody.style.cssText = 'overflow : hidden; height:60rem';
   }
-  // console.log('page', page, 'watchedorwatchlist', value.watchedOrWatchlist);
 
   //   console.log('single search result', searchResults);
   let poster_image = searchResults[0].backdrop_path;
@@ -156,7 +154,7 @@ export async function movieCardExpandedCreator() {
 ///////////////////////////////////////////////////////
 
 //region
-////tahes the searched movie and turns it into an abject then pushes it into the respective list
+////takes the searched movie and turns it into an abject then pushes it into the respective list
 export function movieObjectCreator(searchResults, listButton) {
   console.log('HEY SEARCH RESULTS', searchResults);
 
@@ -178,10 +176,10 @@ export function movieObjectCreator(searchResults, listButton) {
 //end region
 
 export function checkIfMovieIsWatched(movie, watchedButton) {
-  // Retrieve the watched movies list from localStorage or initialize it as an empty array
+  // Retrieve the watched movies list from localStorage or initialize it as an array
   const watchedMovies = JSON.parse(localStorage.getItem('watchedMovies')) || [];
 
-  // Check if the movie is already in the watched list (using its unique ID or a key property)
+  // Check if the movie is already in the watched list
   const movieExists = watchedMovies.some(
     (storedMovie) => storedMovie.id === movie.id
   );
