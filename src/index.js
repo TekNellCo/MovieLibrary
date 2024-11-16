@@ -94,6 +94,7 @@ export function flexWrapBuilder() {
 
 //////When search bar is clicked it highlights all the text
 searchBar.addEventListener('focus', (e) => {
+  console.log('searchbar');
   e.target.select();
 });
 
@@ -125,6 +126,6 @@ navBar.forEach((button) => {
   });
 });
 
-document.addEventListener('mousedown', function (e) {
-  e.preventDefault(); // This can block scrolling
-});
+// document.addEventListener('mousedown', function (e) {
+//   e.preventDefault(); // This can block scrolling
+// });
