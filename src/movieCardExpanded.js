@@ -120,6 +120,7 @@ export async function movieCardExpandedCreator() {
   title.textContent = `${movie_title}`;
   genre.textContent = 'Horror';
   description.textContent = `${movie_description}`;
+
   //region #red
   backButton.addEventListener('click', () => {
     mainBody.style.cssText = 'overflow : scroll; height:auto';
@@ -158,6 +159,7 @@ export async function movieCardExpandedCreator() {
     movieObjectCreator(searchResults, watchedButton);
     console.log('IT WORKS 2B', movieMapWatched);
   });
+  window.scrollTo(0, 0);
 }
 ///////////////////////////////////////////////////////
 
