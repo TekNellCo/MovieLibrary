@@ -42,6 +42,7 @@ html::-webkit-scrollbar {
   width: 0px;
 }
 body {
+  forced-color-adjust: none;
   height: auto;
   width: 100%;
   background-color: var(--main-Background);
