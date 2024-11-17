@@ -5,6 +5,7 @@
   box-sizing: border-box;
   padding: 0px;
   margin: 0px;
+  forced-color-adjust: none;
   /* outline: 1px solid red; */
 }
 :root {
@@ -32,11 +33,16 @@ html[data-theme='light'] {
 html[data-theme='dark'] {
   --search-bar: #2c2c2c;
   --main-Background: #1c1c1e;
-  --svg-active: #7410db;
+  --svg-active: #7410db !important;
   --svg-color: white;
   --movie-card-button-color-active: #7410db;
 }
+html::-webkit-scrollbar {
+  height: 0px;
+  width: 0px;
+}
 body {
+  forced-color-adjust: none;
   height: auto;
   width: 100%;
   background-color: var(--main-Background);
