@@ -120,7 +120,7 @@ export function containerSort(i, carouselContainer, newForYou) {
 ////populates the container(div) images on the home page by category
 function populateContainers(container, category) {
   for (let i = 0; i < movieLibrary[category].length; ++i) {
-    let url = `https://image.tmdb.org/t/p/w500${movieLibrary[category][i].poster_path}`;
+    let url = `https://image.tmdb.org/t/p/w342${movieLibrary[category][i].poster_path}`;
     let dataSetID = `${movieLibrary.popular[i].title}`;
     const movieCards = document.createElement('img');
     movieCards.classList.add('movieCard');
