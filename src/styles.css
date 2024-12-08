@@ -126,6 +126,7 @@ h1 {
   min-width: 30%;
   width: auto;
   min-height: 15%;
+  aspect-ratio: 2/3;
 }
 .carouselContainer {
   position: relative;
@@ -355,6 +356,21 @@ h1 {
 /*  */
 /*  */
 /* Using this to seperate so i dont get mixed up */
+
+@media (min-width: 1440px) {
+  .mainBody {
+    height: 100dvh;
+  }
+  .flexWrap {
+    padding-bottom: 1.3rem;
+    row-gap: 1rem !important;
+    height: auto;
+    .flexCard {
+      max-width: 14%;
+    }
+  }
+}
+
 /*  */
 /*  */
 /*  */
@@ -372,7 +388,7 @@ h1 {
 /*  */
 /*  */
 /*  */
-@media (min-width: 2560px) {
+@media (min-width: 2160px) {
   .mainHeader {
     width: 30rem;
     height: 8.4%;
@@ -432,6 +448,9 @@ h1 {
     padding-top: 1%;
     gap: 1.4%;
   }
+  .flexCard {
+    max-width: 2rem;
+  }
   .watchOrListHeader {
     font-size: 4rem;
   }
@@ -442,7 +461,7 @@ h1 {
 /*  */
 /*  */
 /*  */
-@media (min-width: 2560px) and (min-resolution: 144dpi) {
+@media (min-width: 2160px) and (min-resolution: 144dpi) {
   .mainHeader {
     flex-direction: column;
     gap: 2%;
@@ -487,10 +506,10 @@ h1 {
   .watchOrListHeader {
     font-size: 2.4rem;
   }
+
   .flexCard {
     min-width: 0px;
     width: auto;
-    max-height: 30rem;
   }
   .carouselContainer {
     overflow-x: scroll;
